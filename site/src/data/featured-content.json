@@ -1,0 +1,41 @@
+{
+  "heading": {
+    "id": "featured",
+    "title": "Featured content",
+    "viewAll": { "label": "View all content", "url": "https://devblogs.microsoft.com/microsoft365dev/" }
+  },
+  "items": [
+    {
+      "type": "Blog",
+      "title": "Build agents with Copilot and Work IQ",
+      "description": "Learn how Work IQ brings organizational context to your Copilot experiences.",
+      "icon": "file-text",
+      "accent": "purple",
+      "link": { "label": "Read more", "url": "https://devblogs.microsoft.com/microsoft365dev/" }
+    },
+    {
+      "type": "Video",
+      "title": "Intro to Plugins and MCP",
+      "description": "Understand plugins, skills, connectors and MCP with real examples.",
+      "icon": "video",
+      "accent": "green",
+      "link": { "label": "Watch now", "url": "https://www.youtube.com/@Microsoft365Developer" }
+    },
+    {
+      "type": "Lab",
+      "title": "Build your first Copilot plugin",
+      "description": "Hands-on lab to create and deploy your first plugin to Copilot.",
+      "icon": "flask",
+      "accent": "blue",
+      "link": { "label": "Start lab", "url": "https://microsoft.github.io/copilot-camp/" }
+    },
+    {
+      "type": "Cookbook",
+      "title": "Work IQ Cookbook",
+      "description": "Step-by-step recipes to ground your agent with the right data.",
+      "icon": "book-open",
+      "accent": "orange",
+      "link": { "label": "Explore recipes", "url": "https://github.com/search?q=org%3Amicrosoft+copilot+cookbook&type=repositories" }
+    }
+  ]
+}

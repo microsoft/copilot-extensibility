@@ -1,0 +1,81 @@
+---
+/**
+ * IsoCubes — draws a cluster of isometric, semi-transparent cubes as an inline SVG.
+ * Used by the Hero illustration and by the "blocks"/"cubes" illustrations.
+ */
+interface Cube {
+  /** Center x of the cube (viewBox units). */
+  x: number;
+  /** Center y of the top vertex of the front edge (viewBox units). */
+  y: number;
+  /** Edge length. */
+  s: number;
+}
+
+export interface CubePalette {
+  top: [string, string];
+  left: [string, string];
+  right: [string, string];
+  stroke: string;
+  glow?: string;
+}
+
+interface Props {
+  cubes: Cube[];
+  palette: CubePalette;
+  viewBox: string;
+  class?: string;
+  opacity?: number;
+}
+
+const { cubes, palette, viewBox, class: className, opacity = 0.92 } = Astro.props;
+const uid = `cubes-${Math.random().toString(36).slice(2, 9)}`;
+const k = Math.cos(Math.PI / 6);
+
+const pts = (list: Array<[number, number]>) => list.map(([a, b]) => `${a.toFixed(1)},${b.toFixed(1)}`).join(' ');
+
+const shapes = cubes.map(({ x, y, s }) => ({
+  top: pts([[x, y - s], [x + k * s, y - s / 2], [x, y], [x - k * s, y - s / 2]]),
+  left: pts([[x - k * s, y - s / 2], [x, y], [x, y + s], [x - k * s, y + s / 2]]),
+  right: pts([[x, y], [x + k * s, y - s / 2], [x + k * s, y + s / 2], [x, y + s]]),
+}));
+---
+
+<svg class={className} viewBox={viewBox} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id={`${uid}-top`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color={palette.top[0]} />
+      <stop offset="1" stop-color={palette.top[1]} />
+    </linearGradient>
+    <linearGradient id={`${uid}-left`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color={palette.left[0]} />
+      <stop offset="1" stop-color={palette.left[1]} />
+    </linearGradient>
+    <linearGradient id={`${uid}-right`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color={palette.right[0]} />
+      <stop offset="1" stop-color={palette.right[1]} />
+    </linearGradient>
+    {
+      palette.glow && (
+        <filter id={`${uid}-glow`} x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      )
+    }
+  </defs>
+  <g filter={palette.glow ? `url(#${uid}-glow)` : undefined} opacity={opacity}>
+    {
+      shapes.map((c) => (
+        <g stroke={palette.stroke} stroke-width="1" stroke-linejoin="round">
+          <polygon points={c.left} fill={`url(#${uid}-left)`} />
+          <polygon points={c.right} fill={`url(#${uid}-right)`} />
+          <polygon points={c.top} fill={`url(#${uid}-top)`} />
+        </g>
+      ))
+    }
+  </g>
+</svg>

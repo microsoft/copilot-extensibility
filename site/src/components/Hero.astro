@@ -1,0 +1,214 @@
+---
+/**
+ * Hero — main banner with headline, description, two call-to-action buttons and an
+ * isometric cube illustration surrounded by floating icon tiles.
+ * Config: `hero.json`.
+ */
+import type { HeroConfig } from '../types/config';
+import Icon from './Icon.astro';
+import IsoCubes from './IsoCubes.astro';
+import { linkAttrs, resolveUrl } from '../utils/url';
+
+interface Props {
+  config: HeroConfig;
+}
+
+const { config } = Astro.props;
+const { title, titleLine2, description, primaryAction, secondaryAction, floatingIcons } = config;
+
+// Positions (percentages of the illustration box) for up to 6 floating icon tiles.
+const slots = [
+  { top: '6%', left: '8%' },
+  { top: '16%', left: '86%' },
+  { top: '44%', left: '0%' },
+  { top: '70%', left: '14%' },
+  { top: '56%', left: '90%' },
+  { top: '84%', left: '74%' },
+];
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1 id="hero-title">
+        <span>{title}</span>
+        <span><span class="hero-highlight">{titleLine2.highlight}</span> {titleLine2.text}</span>
+      </h1>
+      <p>{description}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={resolveUrl(primaryAction.url)} {...linkAttrs(primaryAction.url, primaryAction.external)}>
+          {primaryAction.label}
+          <Icon name="arrow-right" size={16} />
+        </a>
+        <a class="btn btn-secondary" href={resolveUrl(secondaryAction.url)} {...linkAttrs(secondaryAction.url, secondaryAction.external)}>
+          {secondaryAction.label}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <IsoCubes
+        class="hero-cubes"
+        viewBox="0 0 400 330"
+        opacity={0.95}
+        palette={{
+          top: ['#c4b5fd', '#818cf8'],
+          left: ['#6366f1', '#312e81'],
+          right: ['#8b5cf6', '#4c1d95'],
+          stroke: 'rgba(196,181,253,.55)',
+          glow: '#7c3aed',
+        }}
+        cubes={[
+          { x: 255, y: 75, s: 62 },
+          { x: 160, y: 125, s: 62 },
+          { x: 300, y: 170, s: 54 },
+          { x: 205, y: 205, s: 58 },
+        ]}
+      />
+      {
+        floatingIcons.slice(0, slots.length).map((icon, i) => (
+          <span class="hero-tile" style={{ top: slots[i].top, left: slots[i].left, animationDelay: `${i * 0.6}s` }}>
+            <Icon name={icon} size={22} />
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    color: var(--chrome-text);
+    background:
+      radial-gradient(60% 80% at 75% 40%, rgba(124, 58, 237, 0.35), transparent 70%),
+      radial-gradient(40% 60% at 95% 90%, rgba(37, 99, 235, 0.25), transparent 70%),
+      linear-gradient(180deg, var(--chrome-bg) 0%, var(--chrome-bg-2) 100%);
+    padding: 3.5rem 0 6.5rem;
+  }
+  .hero-glow {
+    position: absolute;
+    inset: auto -10% -40% 40%;
+    height: 60%;
+    background: radial-gradient(closest-side, rgba(99, 102, 241, 0.35), transparent);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+  h1 {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4.2vw, 3.1rem);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .hero-highlight {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa 60%, #c084fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-copy p {
+    max-width: 34rem;
+    margin: 0 0 1.75rem;
+    color: var(--chrome-muted);
+    font-size: 1.02rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 44px;
+    padding: 0 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition:
+      transform 0.15s ease,
+      background 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn-primary {
+    background: #fff;
+    color: #0b0d24;
+  }
+  .btn-primary:hover {
+    color: #0b0d24;
+    background: #eef0ff;
+  }
+  .btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: var(--chrome-text);
+  }
+  .btn-secondary:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .hero-art {
+    position: relative;
+    aspect-ratio: 400 / 330;
+    max-width: 480px;
+    width: 100%;
+    justify-self: end;
+  }
+  .hero-art :global(.hero-cubes) {
+    width: 100%;
+    height: 100%;
+  }
+  .hero-tile {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    border: 1px solid rgba(165, 180, 252, 0.45);
+    background: rgba(30, 27, 75, 0.6);
+    color: #c7d2fe;
+    box-shadow: 0 0 24px rgba(124, 58, 237, 0.35);
+    backdrop-filter: blur(4px);
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      padding: 2.5rem 0 6rem;
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-art {
+      justify-self: center;
+      max-width: 360px;
+    }
+  }
+</style>

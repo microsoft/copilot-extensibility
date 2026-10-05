@@ -1,0 +1,38 @@
+---
+/**
+ * CommunityEvents — "Community & events" section with two side-by-side panels:
+ *   • firstPartyEvents → events organized by Microsoft and/or the Copilot Extensibility team
+ *   • communityEvents  → events, communities and initiatives organized by the community
+ * Config: `community-events.json`.
+ */
+import type { CommunityEventsConfig } from '../types/config';
+import EventGroup from './EventGroup.astro';
+import SectionHeader from './SectionHeader.astro';
+
+interface Props {
+  config: CommunityEventsConfig;
+}
+
+const { config } = Astro.props;
+---
+
+<section class="section container" id={config.heading.id} aria-labelledby={`${config.heading.id}-title`}>
+  <SectionHeader heading={config.heading} />
+  <div class="events-grid">
+    <EventGroup group={config.firstPartyEvents} kind="first-party" />
+    <EventGroup group={config.communityEvents} kind="community" />
+  </div>
+</section>
+
+<style>
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

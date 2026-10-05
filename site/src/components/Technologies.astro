@@ -1,0 +1,81 @@
+---
+/**
+ * Technologies — "Technologies at a glance" strip of tiles, one per extensibility technology.
+ * Config: `technologies.json`. Each tile shows an icon (or an optional `image`, e.g. an official
+ * logo stored in `public/`), the technology name, and links to its documentation. The optional
+ * `description` is used as tooltip and indexed by the header search.
+ */
+import type { TechnologiesConfig } from '../types/config';
+import Icon from './Icon.astro';
+import SectionHeader from './SectionHeader.astro';
+import { linkAttrs, resolveUrl } from '../utils/url';
+
+interface Props {
+  config: TechnologiesConfig;
+}
+
+const { config } = Astro.props;
+---
+
+<section class="section container" id={config.heading.id} aria-labelledby={`${config.heading.id}-title`}>
+  <SectionHeader heading={config.heading} />
+  <ul class="tech-grid">
+    {
+      config.items.map((item) => (
+        <li class={`accent-${item.accent}`}>
+          <a
+            class="card card-interactive tech-tile"
+            href={resolveUrl(item.url)}
+            title={item.description}
+            {...linkAttrs(item.url)}
+          >
+            {item.image ? (
+              <img src={resolveUrl(item.image)} alt="" width="36" height="36" loading="lazy" />
+            ) : (
+              <span class="icon-tile tech-icon">
+                <Icon name={item.icon} size={22} />
+              </span>
+            )}
+            <span class="tech-name">{item.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tech-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    height: 100%;
+    min-height: 104px;
+    padding: 0.9rem 0.5rem;
+    text-align: center;
+    color: var(--text);
+  }
+  .tech-tile:hover {
+    color: var(--text);
+  }
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .tech-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+</style>

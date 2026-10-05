@@ -1,0 +1,63 @@
+---
+/**
+ * Home / landing page.
+ * This file only composes components: every block of content is a component that receives
+ * its own JSON configuration from `src/data/`. Re-order, remove or duplicate blocks here.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import QuickLinks from '../components/QuickLinks.astro';
+import FeaturedContent from '../components/FeaturedContent.astro';
+import Technologies from '../components/Technologies.astro';
+import LearningPaths from '../components/LearningPaths.astro';
+import CommunityEvents from '../components/CommunityEvents.astro';
+import Ecosystem from '../components/Ecosystem.astro';
+import Footer from '../components/Footer.astro';
+
+import type {
+  CommunityEventsConfig,
+  EcosystemConfig,
+  FeaturedContentConfig,
+  HeroConfig,
+  LearningPathsConfig,
+  NavigationConfig,
+  QuickLinksConfig,
+  TechnologiesConfig,
+} from '../types/config';
+import navigationJson from '../data/navigation.json';
+import heroJson from '../data/hero.json';
+import quickLinksJson from '../data/quick-links.json';
+import featuredJson from '../data/featured-content.json';
+import technologiesJson from '../data/technologies.json';
+import learningPathsJson from '../data/learning-paths.json';
+import communityEventsJson from '../data/community-events.json';
+import ecosystemJson from '../data/ecosystem.json';
+import { buildSearchIndex } from '../utils/search';
+
+// Typed views over the JSON files: `astro check` fails if a JSON file doesn't match its contract.
+const navigation: NavigationConfig = navigationJson;
+const hero: HeroConfig = heroJson;
+const quickLinks: QuickLinksConfig = quickLinksJson;
+const featured: FeaturedContentConfig = featuredJson;
+const technologies: TechnologiesConfig = technologiesJson;
+const learningPaths: LearningPathsConfig = learningPathsJson;
+const events: CommunityEventsConfig = communityEventsJson;
+const ecosystem: EcosystemConfig = ecosystemJson;
+
+const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technologies, learningPaths, events, ecosystem });
+---
+
+<BaseLayout>
+  <Header config={navigation.header} searchIndex={searchIndex} />
+  <main id="main">
+    <Hero config={hero} />
+    <QuickLinks config={quickLinks} />
+    <FeaturedContent config={featured} />
+    <Technologies config={technologies} />
+    <LearningPaths config={learningPaths} />
+    <CommunityEvents config={events} />
+    <Ecosystem config={ecosystem} />
+  </main>
+  <Footer config={navigation.footer} />
+</BaseLayout>

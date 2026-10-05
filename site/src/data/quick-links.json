@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "title": "Learn",
+      "description": "Docs, blogs, videos, learning paths",
+      "icon": "graduation-cap",
+      "accent": "purple",
+      "link": { "label": "Explore", "url": "#learning-paths" }
+    },
+    {
+      "title": "Build",
+      "description": "Samples, labs, cookbooks, workshops",
+      "icon": "code",
+      "accent": "green",
+      "link": { "label": "Explore", "url": "#featured" }
+    },
+    {
+      "title": "Technologies",
+      "description": "Explore extensibility building blocks",
+      "icon": "cubes",
+      "accent": "blue",
+      "link": { "label": "Explore", "url": "#technologies" }
+    },
+    {
+      "title": "Community",
+      "description": "Connect, events and programs",
+      "icon": "users",
+      "accent": "orange",
+      "link": { "label": "Explore", "url": "#community" }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "heading": {
+    "id": "ecosystem",
+    "title": "Explore the ecosystem",
+    "subtitle": "Discover more communities, events and resources across the Copilot extensibility ecosystem."
+  },
+  "cards": [
+    {
+      "title": "Community initiatives",
+      "accent": "green",
+      "illustration": "people",
+      "links": [
+        { "label": "Microsoft 365 & Power Platform Community", "url": "https://pnp.github.io/" },
+        { "label": "Global AI Community", "url": "https://globalai.community/" },
+        { "label": "Copilot Developer Camp", "url": "https://microsoft.github.io/copilot-camp/" },
+        { "label": "Agents League", "url": "https://github.com/search?q=agents+league&type=repositories" },
+        { "label": "Microsoft IQ Series", "url": "https://learn.microsoft.com/search/?terms=Microsoft%20IQ" }
+      ]
+    },
+    {
+      "title": "Community events",
+      "accent": "purple",
+      "illustration": "calendar",
+      "links": [
+        { "label": "Fly with Copilot", "url": "https://developer.microsoft.com/en-us/reactor/" },
+        { "label": "Copilot Dev Camp Summit", "url": "https://microsoft.github.io/copilot-camp/" },
+        { "label": "Copilot Extensibility Monthly Community Call", "url": "https://aka.ms/m365pnp/community" },
+        { "label": "Workshops and Hackathons", "url": "https://developer.microsoft.com/en-us/reactor/" },
+        { "label": "Community Webinars", "url": "https://pnp.github.io/#community-calls" }
+      ]
+    },
+    {
+      "title": "Featured resources",
+      "accent": "blue",
+      "illustration": "folder",
+      "links": [
+        { "label": "Latest labs", "url": "https://microsoft.github.io/copilot-camp/" },
+        { "label": "New cookbooks", "url": "https://github.com/search?q=org%3Amicrosoft+copilot+cookbook&type=repositories" },
+        { "label": "Recent videos", "url": "https://www.youtube.com/@Microsoft365Developer" },
+        { "label": "New GitHub samples", "url": "https://adoption.microsoft.com/sample-solution-gallery/" }
+      ]
+    }
+  ]
+}

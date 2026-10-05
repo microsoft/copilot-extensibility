@@ -1,0 +1,74 @@
+{
+  "heading": {
+    "id": "community",
+    "title": "Community & events"
+  },
+  "firstPartyEvents": {
+    "title": "Upcoming events",
+    "viewAll": { "label": "View all events", "url": "https://developer.microsoft.com/en-us/reactor/" },
+    "footerLink": { "label": "Explore all community calls, webinars and events", "url": "https://pnp.github.io/#community-calls" },
+    "hidePast": false,
+    "sortByDate": true,
+    "items": [
+      {
+        "title": "Fly with Copilot",
+        "description": "Live demos and deep dives from the product team.",
+        "icon": "send",
+        "accent": "purple",
+        "organizer": "Microsoft",
+        "date": "2026-10-21",
+        "link": { "label": "Register", "url": "https://developer.microsoft.com/en-us/reactor/" }
+      },
+      {
+        "title": "Copilot Dev Camp Summit",
+        "description": "Join our global developer community event.",
+        "icon": "mountain",
+        "accent": "green",
+        "organizer": "Copilot Extensibility team",
+        "date": "2026-11-10",
+        "endDate": "2026-11-11",
+        "link": { "label": "Learn more", "url": "https://microsoft.github.io/copilot-camp/" }
+      },
+      {
+        "title": "Copilot Extensibility Monthly Community Call",
+        "description": "Join the community call to learn, connect and ask questions.",
+        "icon": "calendar",
+        "accent": "orange",
+        "organizer": "Copilot Extensibility team",
+        "date": "2026-10-28",
+        "link": { "label": "Add to calendar", "url": "https://aka.ms/m365pnp/community" }
+      }
+    ]
+  },
+  "communityEvents": {
+    "title": "From the community",
+    "viewAll": { "label": "View all", "url": "https://pnp.github.io/" },
+    "items": [
+      {
+        "title": "Microsoft 365 & Power Platform Community",
+        "description": "Connect with experts, ask questions and share solutions with the community.",
+        "icon": "globe",
+        "accent": "blue",
+        "organizer": "Microsoft 365 & Power Platform Community",
+        "dateLabel": "Weekly calls",
+        "link": { "label": "Visit community", "url": "https://pnp.github.io/" }
+      },
+      {
+        "title": "Global AI Community",
+        "description": "Learn, build and collaborate with AI enthusiasts around the world.",
+        "icon": "cpu",
+        "accent": "indigo",
+        "organizer": "Global AI Community",
+        "link": { "label": "Visit community", "url": "https://globalai.community/" }
+      },
+      {
+        "title": "Community champions",
+        "description": "Meet the champions driving Copilot extensibility forward.",
+        "icon": "award",
+        "accent": "orange",
+        "organizer": "Community",
+        "link": { "label": "Meet the champions", "url": "https://mvp.microsoft.com/" }
+      }
+    ]
+  }
+}

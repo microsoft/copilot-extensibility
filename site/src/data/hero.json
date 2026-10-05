@@ -1,0 +1,8 @@
+{
+  "title": "Extend Microsoft Copilot.",
+  "titleLine2": { "highlight": "Build", "text": "what’s next." },
+  "description": "Discover tools, technologies, samples, and community resources to extend Microsoft Copilot and build intelligent solutions and agents.",
+  "primaryAction": { "label": "Start building", "url": "#learning-paths" },
+  "secondaryAction": { "label": "Explore technologies", "url": "#technologies" },
+  "floatingIcons": ["puzzle", "users", "code", "database", "box", "network"]
+}

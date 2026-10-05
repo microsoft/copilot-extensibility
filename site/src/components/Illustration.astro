@@ -1,0 +1,168 @@
+---
+/**
+ * Illustration — decorative artwork referenced by name from JSON files
+ * ("illustration": "blocks" | "cubes" | "code" | "people" | "calendar" | "folder").
+ * To add a new illustration, add a new `name === '...'` branch below.
+ */
+import IsoCubes, { type CubePalette } from './IsoCubes.astro';
+
+interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+
+const palettes: Record<string, CubePalette> = {
+  blocks: {
+    top: ['#d1fae5', '#86efac'],
+    left: ['#4ade80', '#16a34a'],
+    right: ['#86efac', '#22c55e'],
+    stroke: 'rgba(255,255,255,.7)',
+  },
+  cubes: {
+    top: ['#dbeafe', '#93c5fd'],
+    left: ['#60a5fa', '#2563eb'],
+    right: ['#93c5fd', '#3b82f6'],
+    stroke: 'rgba(255,255,255,.7)',
+  },
+};
+---
+
+<div class:list={['illustration', className]} aria-hidden="true">
+  {
+    name === 'blocks' && (
+      <IsoCubes
+        viewBox="0 0 120 100"
+        palette={palettes.blocks}
+        cubes={[
+          { x: 60, y: 30, s: 20 },
+          { x: 42.7, y: 60, s: 20 },
+          { x: 77.3, y: 60, s: 20 },
+        ]}
+      />
+    )
+  }
+  {
+    name === 'cubes' && (
+      <IsoCubes
+        viewBox="0 0 120 110"
+        palette={palettes.cubes}
+        cubes={[
+          { x: 60, y: 22, s: 18 },
+          { x: 44.4, y: 49, s: 18 },
+          { x: 75.6, y: 49, s: 18 },
+          { x: 60, y: 76, s: 18 },
+        ]}
+      />
+    )
+  }
+  {
+    name === 'code' && (
+      <svg viewBox="0 0 120 100">
+        <defs>
+          <linearGradient id="illus-code" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#a78bfa" />
+            <stop offset="1" stop-color="#6d28d9" />
+          </linearGradient>
+        </defs>
+        <rect x="18" y="16" width="84" height="66" rx="10" fill="url(#illus-code)" />
+        <rect x="18" y="16" width="84" height="16" rx="10" fill="#ffffff" opacity=".18" />
+        <circle cx="30" cy="24" r="2.6" fill="#fff" opacity=".85" />
+        <circle cx="38" cy="24" r="2.6" fill="#fff" opacity=".6" />
+        <circle cx="46" cy="24" r="2.6" fill="#fff" opacity=".45" />
+        <path
+          d="m50 47-9 9 9 9M70 47l9 9-9 9M64 43l-8 26"
+          fill="none"
+          stroke="#fff"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    )
+  }
+  {
+    name === 'people' && (
+      <svg viewBox="0 0 120 100">
+        <defs>
+          <linearGradient id="illus-people" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6ee7b7" />
+            <stop offset="1" stop-color="#16a34a" />
+          </linearGradient>
+        </defs>
+        <circle cx="40" cy="38" r="13" fill="url(#illus-people)" opacity=".75" />
+        <path d="M16 88c0-15 11-26 24-26s24 11 24 26z" fill="url(#illus-people)" opacity=".75" />
+        <circle cx="76" cy="34" r="15" fill="url(#illus-people)" />
+        <path d="M48 88c0-18 12-30 28-30s28 12 28 30z" fill="url(#illus-people)" />
+      </svg>
+    )
+  }
+  {
+    name === 'calendar' && (
+      <svg viewBox="0 0 120 100">
+        <defs>
+          <linearGradient id="illus-cal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#c4b5fd" />
+            <stop offset="1" stop-color="#7c3aed" />
+          </linearGradient>
+        </defs>
+        <rect x="20" y="18" width="80" height="70" rx="10" fill="#fff" stroke="#ddd6fe" stroke-width="2" />
+        <path d="M20 28a10 10 0 0 1 10-10h60a10 10 0 0 1 10 10v8H20z" fill="url(#illus-cal)" />
+        <rect x="38" y="10" width="6" height="16" rx="3" fill="#6d28d9" />
+        <rect x="76" y="10" width="6" height="16" rx="3" fill="#6d28d9" />
+        {[0, 1, 2, 3].map((c) =>
+          [0, 1, 2].map((r) => (
+            <rect
+              x={30 + c * 16}
+              y={44 + r * 14}
+              width="10"
+              height="9"
+              rx="2"
+              fill={c === 2 && r === 1 ? '#7c3aed' : '#ddd6fe'}
+            />
+          )),
+        )}
+      </svg>
+    )
+  }
+  {
+    name === 'folder' && (
+      <svg viewBox="0 0 120 100">
+        <defs>
+          <linearGradient id="illus-folder-back" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#93c5fd" />
+            <stop offset="1" stop-color="#3b82f6" />
+          </linearGradient>
+          <linearGradient id="illus-folder-front" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#bfdbfe" />
+            <stop offset="1" stop-color="#2563eb" />
+          </linearGradient>
+        </defs>
+        <path d="M14 26a6 6 0 0 1 6-6h26l8 8h46a6 6 0 0 1 6 6v46a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="url(#illus-folder-back)" />
+        <rect x="24" y="30" width="72" height="44" rx="4" fill="#fff" opacity=".9" />
+        <path d="M14 42a6 6 0 0 1 6-6h80a6 6 0 0 1 6 6v38a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="url(#illus-folder-front)" opacity=".95" />
+        <path
+          d="m54 54-7 7 7 7M66 54l7 7-7 7"
+          fill="none"
+          stroke="#fff"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    )
+  }
+</div>
+
+<style>
+  .illustration {
+    display: grid;
+    place-items: center;
+  }
+  .illustration :global(svg) {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+</style>

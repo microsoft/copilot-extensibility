@@ -1,0 +1,33 @@
+{
+  "heading": {
+    "id": "learning-paths",
+    "title": "Recommended learning paths",
+    "viewAll": { "label": "View all paths", "url": "https://learn.microsoft.com/training/browse/?terms=copilot%20extensibility" }
+  },
+  "items": [
+    {
+      "title": "Maker path",
+      "description": "Start building in minutes with low-code tools and guided experiences.",
+      "icon": "wand",
+      "accent": "green",
+      "illustration": "blocks",
+      "link": { "label": "Start learning", "url": "https://microsoft.github.io/copilot-camp/pages/make/" }
+    },
+    {
+      "title": "Developer path",
+      "description": "Deep dive into extensibility, APIs, plugins and agent development.",
+      "icon": "terminal",
+      "accent": "purple",
+      "illustration": "code",
+      "link": { "label": "Start learning", "url": "https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/" }
+    },
+    {
+      "title": "Architect path",
+      "description": "Design scalable, secure and governed Copilot solutions.",
+      "icon": "compass",
+      "accent": "blue",
+      "illustration": "cubes",
+      "link": { "label": "Start learning", "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/decision-guide" }
+    }
+  ]
+}

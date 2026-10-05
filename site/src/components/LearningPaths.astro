@@ -1,0 +1,107 @@
+---
+/**
+ * LearningPaths — persona-based learning path cards (Maker, Developer, Architect, ...).
+ * Config: `learning-paths.json`. Each card has a tinted background driven by its `accent`
+ * and a decorative `illustration`.
+ */
+import type { LearningPathsConfig } from '../types/config';
+import Icon from './Icon.astro';
+import Illustration from './Illustration.astro';
+import SectionHeader from './SectionHeader.astro';
+import { linkAttrs, resolveUrl } from '../utils/url';
+
+interface Props {
+  config: LearningPathsConfig;
+}
+
+const { config } = Astro.props;
+---
+
+<section class="section container" id={config.heading.id} aria-labelledby={`${config.heading.id}-title`}>
+  <SectionHeader heading={config.heading} />
+  <ul class="paths-grid">
+    {
+      config.items.map((item) => (
+        <li class={`accent-${item.accent}`}>
+          <a class="card card-interactive path-card" href={resolveUrl(item.link.url)} {...linkAttrs(item.link.url, item.link.external)}>
+            <div class="path-body">
+              <h3>
+                <span class="path-icon">
+                  <Icon name={item.icon} size={18} />
+                </span>
+                {item.title}
+              </h3>
+              <p>{item.description}</p>
+              <span class="link-arrow">
+                {item.link.label}
+                <Icon name="arrow-right" size={14} />
+              </span>
+            </div>
+            <Illustration name={item.illustration} class="path-art" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .path-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.25rem;
+    color: var(--text);
+    background: linear-gradient(135deg, var(--accent-soft), color-mix(in srgb, var(--accent-soft) 40%, var(--surface)));
+    border-color: color-mix(in srgb, var(--accent) 15%, var(--border));
+  }
+  .path-card:hover {
+    color: var(--text);
+  }
+  .path-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    font-size: 1.02rem;
+  }
+  .path-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+  p {
+    margin: 0;
+    font-size: 0.87rem;
+    color: var(--text-muted);
+  }
+  .link-arrow {
+    margin-top: 0.25rem;
+    color: var(--link);
+  }
+  .path-card :global(.path-art) {
+    width: 92px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+</style>

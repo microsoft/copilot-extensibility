@@ -1,0 +1,53 @@
+---
+/**
+ * BaseLayout — HTML shell shared by every page: <head> metadata (from `site.json`),
+ * global styles, and the no-flash theme bootstrap script.
+ */
+import '../styles/global.css';
+import type { SiteConfig } from '../types/config';
+import site from '../data/site.json';
+import { resolveUrl } from '../utils/url';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const config: SiteConfig = site;
+const { title = config.title, description = config.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={config.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={config.themeColor} />
+    <link rel="icon" type={config.favicon.endsWith('.svg') ? 'image/svg+xml' : 'image/png'} href={resolveUrl(config.favicon)} />
+    <link rel="apple-touch-icon" href={resolveUrl('/apple-touch-icon.png')} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      // Apply the saved (or OS-preferred) theme before first paint to avoid a flash.
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

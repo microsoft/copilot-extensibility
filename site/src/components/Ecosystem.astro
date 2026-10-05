@@ -1,0 +1,86 @@
+---
+/**
+ * Ecosystem — "Explore the ecosystem" section: tinted cards, each with a list of links
+ * and a decorative illustration.
+ * Config: `ecosystem.json`.
+ */
+import type { EcosystemConfig } from '../types/config';
+import Icon from './Icon.astro';
+import Illustration from './Illustration.astro';
+import SectionHeader from './SectionHeader.astro';
+import { linkAttrs, resolveUrl } from '../utils/url';
+
+interface Props {
+  config: EcosystemConfig;
+}
+
+const { config } = Astro.props;
+---
+
+<section class="section container" id={config.heading.id} aria-labelledby={`${config.heading.id}-title`}>
+  <SectionHeader heading={config.heading} />
+  <div class="eco-grid">
+    {
+      config.cards.map((card) => (
+        <article class={`card eco-card accent-${card.accent}`}>
+          <div class="eco-body">
+            <h3>{card.title}</h3>
+            <ul>
+              {card.links.map((link) => (
+                <li>
+                  <a class="link-arrow" href={resolveUrl(link.url)} {...linkAttrs(link.url, link.external)}>
+                    {link.label}
+                    <Icon name="arrow-right" size={13} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Illustration name={card.illustration} class="eco-art" />
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .eco-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .eco-card {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1.1rem 1.25rem;
+    background: linear-gradient(135deg, var(--accent-soft), color-mix(in srgb, var(--accent-soft) 35%, var(--surface)));
+    border-color: color-mix(in srgb, var(--accent) 15%, var(--border));
+  }
+  .eco-body {
+    flex: 1;
+    min-width: 0;
+  }
+  h3 {
+    margin: 0 0 0.6rem;
+    font-size: 0.95rem;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .link-arrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .eco-card :global(.eco-art) {
+    align-self: flex-end;
+    width: 100px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+</style>
