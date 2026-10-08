@@ -38,11 +38,11 @@
     },
     {
       "type": "Cookbook",
-      "title": "Copilot Agent Cookbooks",
-      "description": "Sample recipes for building M365 Copilot declarative agents using WIQD.",
+      "title": "Plugins Cookbooks",
+      "description": "Sample recipes for building Plugins for Microsoft 365 Copilot/Cowork using WIQD.",
       "icon": "book-open",
       "accent": "orange",
-      "link": { "label": "Explore recipes", "url": "https://github.com/microsoft/plugins" }
+      "link": { "label": "Explore recipes", "url": "https://aka.ms/wiqd/cookbooks" }
     },
     {
       "type": "Website",
