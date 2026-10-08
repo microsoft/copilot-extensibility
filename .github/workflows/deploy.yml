@@ -31,15 +31,18 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v7
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         with:
           path: ./site
           node-version: 22
-        # Uncomment to publish under a custom domain (and add site/public/CNAME):
-        # env:
-        #   SITE_URL: 'https://copilot-extensibility.example.com'
-        #   BASE_PATH: '/'
+        env:
+          SITE_URL: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
   deploy:
     needs: build

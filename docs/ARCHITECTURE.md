@@ -137,13 +137,14 @@ that file; content changes only touch `src/data/*.json`.
 
 ### 5.1 URLs and the base path
 
-GitHub Pages serves this project under `/copilot-extensibility/`. JSON files use deployment-agnostic URLs, and
-`utils/url.ts` resolves them:
+The deployment workflow obtains the actual GitHub Pages origin and base path from `actions/configure-pages`.
+Public project Pages normally use `/copilot-extensibility/`; private Pages may use a randomized host with `/`.
+JSON files use deployment-agnostic URLs, and `utils/url.ts` resolves them:
 
 | URL in JSON | Rendered `href` | Behaviour |
 | --- | --- | --- |
 | `#featured` | `#featured` | In-page anchor (sections have matching `id`s). |
-| `/copilot-logo.png` | `/copilot-extensibility/copilot-logo.png` | Prefixed with Astro's `BASE_URL`. |
+| `/copilot-logo.png` | `<base-path>/copilot-logo.png` | Prefixed with Astro's `BASE_URL`. |
 | `https://…` | unchanged | Opens in a new tab with `rel="noopener noreferrer"` (override with `"external": false`). |
 
 - `resolveUrl(url)` — adds the base path to root-relative URLs.

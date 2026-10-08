@@ -48,18 +48,19 @@ flowchart LR
 
 ## Step 1 — Verify the site configuration
 
-Open [`site/astro.config.mjs`](../site/astro.config.mjs) and verify the two values that tell Astro where the site will live:
+[`site/astro.config.mjs`](../site/astro.config.mjs) contains local defaults for the public project site:
 
 ```js
 const site = process.env.SITE_URL ?? 'https://microsoft.github.io';
-const base = process.env.BASE_PATH ?? '/copilot-extensibility';
+const base = process.env.BASE_PATH === undefined ? '/copilot-extensibility' : process.env.BASE_PATH || '/';
 ```
 
 - `site` — the origin of the published site (`https://<owner>.github.io`).
 - `base` — the sub-path, which for a GitHub Pages *project site* is `/<repository-name>`.
 
-If the repository is forked or renamed, either update these defaults or set the `SITE_URL` / `BASE_PATH`
-environment variables in the workflow (see [Custom domain](#optional--use-a-custom-domain)).
+The deployment workflow runs `actions/configure-pages` and passes its `origin` and `base_path` outputs to Astro.
+This automatically handles forks, renamed repositories, custom domains and private Pages sites hosted at randomized
+root URLs such as `https://<random-name>.pages.github.io/`. An empty Pages base path is normalized to `/`.
 
 > All internal URLs in the JSON configuration files are written root-relative (e.g. `/copilot-logo.png`) and the
 > components automatically prefix them with `base`, so **content files never need to change** when the
@@ -224,20 +225,9 @@ Every deployment is tied to a workflow run. To roll back:
 1. Configure DNS with your domain provider (a `CNAME` record pointing to `microsoft.github.io` for a subdomain).
    See [Managing a custom domain for your GitHub Pages site](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 2. Add a file `site/public/CNAME` containing only the domain name, e.g. `copilot-extensibility.example.com`.
-3. Make Astro build for the root of the domain by setting the environment variables in the workflow:
-
-   ```yaml
-   - uses: withastro/action@v6
-     with:
-       path: ./site
-       node-version: 22
-     env:
-       SITE_URL: 'https://copilot-extensibility.example.com'
-       BASE_PATH: '/'
-   ```
-
-4. In **Settings → Pages → Custom domain**, enter the domain, save, and enable **Enforce HTTPS** once the
+3. In **Settings → Pages → Custom domain**, enter the domain, save, and enable **Enforce HTTPS** once the
    certificate has been issued.
+4. Trigger a deployment. The workflow reads the custom origin and root base path from GitHub Pages automatically.
 
 ---
 
@@ -245,7 +235,7 @@ Every deployment is tied to a workflow run. To roll back:
 
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
-| Page loads without styles / logo, 404 on `/assets/...` | `base` does not match the repository name or the custom-domain setup. | Fix `base` / `BASE_PATH` (Step 1 or custom domain step 3). |
+| Page loads without styles / logo, 404 on `/assets/...` | The deployment was built with a stale or incorrect Pages base path. | Re-run the current workflow, which reads `base_path` from `actions/configure-pages`; verify the build step received the expected value. |
 | `Get Pages site failed` or `Not Found` in the deploy job | Pages is not enabled or source isn't **GitHub Actions**. | Complete Step 4. |
 | `Branch "x" is not allowed to deploy to github-pages due to environment protection rules` | Deploying from a branch other than the allowed ones. | Deploy from `main`, or add the branch in **Settings → Environments → github-pages**. |
 | `Resource not accessible by integration` / permission errors | Missing `pages: write` / `id-token: write`, or org restricts workflow permissions. | Keep the `permissions` block of the workflow; ask an org owner to allow it. |
