@@ -1,8 +1,7 @@
 {
   "heading": {
     "id": "technologies",
-    "title": "Technologies at a glance",
-    "viewAll": { "label": "View all technologies", "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/" }
+    "title": "Technologies at a glance"
   },
   "items": [
     {
@@ -15,51 +14,51 @@
     {
       "name": "Copilot Cowork",
       "description": "Collaborative, multi-user Copilot experiences.",
-      "icon": "users",
+      "icon": "bot",
       "accent": "purple",
-      "url": "https://learn.microsoft.com/search/?terms=Copilot%20Cowork"
+      "url": "https://learn.microsoft.com/microsoft-365/copilot/cowork/get-started"
+    },
+    {
+      "name": "Microsoft IQ",
+      "description": "The intelligence layer powering Microsoft Copilot experiences.",
+      "icon": "api",
+      "accent": "teal",
+      "url": "https://learn.microsoft.com/microsoft-iq/"
     },
     {
       "name": "Work IQ",
       "description": "Organizational intelligence that grounds Copilot in your work context.",
       "icon": "brain",
-      "accent": "teal",
-      "url": "https://learn.microsoft.com/search/?terms=Work%20IQ"
-    },
-    {
-      "name": "Microsoft IQ",
-      "description": "The intelligence layer powering Microsoft Copilot experiences.",
-      "icon": "spark",
       "accent": "blue",
-      "url": "https://learn.microsoft.com/search/?terms=Microsoft%20IQ"
+      "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
     },
     {
       "name": "Copilot Studio",
       "description": "Low-code platform to build and publish agents.",
       "icon": "layout",
       "accent": "teal",
-      "url": "https://learn.microsoft.com/microsoft-copilot-studio/"
+      "url": "https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio"
     },
     {
       "name": "Plugins",
       "description": "Extend Copilot with actions on your APIs.",
-      "icon": "puzzle",
+      "icon": "settings",
       "accent": "purple",
-      "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-api-plugins"
+      "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/plugins-overview"
     },
     {
       "name": "Skills",
       "description": "Reusable capabilities you can add to agents.",
       "icon": "graduation-cap",
       "accent": "indigo",
-      "url": "https://learn.microsoft.com/search/?terms=Copilot%20skills"
+      "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-create"
     },
     {
       "name": "Connectors",
       "description": "Bring external content into Microsoft Graph and Copilot.",
       "icon": "link",
       "accent": "green",
-      "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-copilot-connector"
+      "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector"
     },
     {
       "name": "MCP",
@@ -73,14 +72,14 @@
       "description": "Discover and manage plugins across your organization.",
       "icon": "grid",
       "accent": "blue",
-      "url": "https://learn.microsoft.com/search/?terms=Copilot%20plugin%20registry"
+      "url": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-plugins-skills-mcp-servers"
     },
     {
       "name": "Agent 365",
       "description": "Govern, secure and manage agents at scale.",
       "icon": "shield",
       "accent": "purple",
-      "url": "https://learn.microsoft.com/search/?terms=Agent%20365"
+      "url": "https://learn.microsoft.com/microsoft-agent-365/overview"
     }
   ]
 }

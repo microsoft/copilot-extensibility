@@ -9,29 +9,14 @@
       { "label": "Learn", "url": "#learning-paths" },
       { "label": "Build", "url": "#featured" },
       { "label": "Technologies", "url": "#technologies" },
-      { "label": "Community", "url": "#community" },
+      { "label": "Events", "url": "#community" },
       {
         "label": "Resources",
         "children": [
           {
             "label": "Documentation",
-            "description": "Microsoft 365 Copilot extensibility docs",
+            "description": "Microsoft 365 Copilot extensibility",
             "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/"
-          },
-          {
-            "label": "GitHub repositories",
-            "description": "Open-source samples and tools",
-            "url": "https://github.com/search?q=org%3Amicrosoft+copilot+extensibility&type=repositories"
-          },
-          {
-            "label": "Cookbooks",
-            "description": "Step-by-step recipes for common scenarios",
-            "url": "https://github.com/search?q=org%3Amicrosoft+copilot+cookbook&type=repositories"
-          },
-          {
-            "label": "Videos",
-            "description": "Microsoft 365 Developer on YouTube",
-            "url": "https://www.youtube.com/@Microsoft365Developer"
           },
           {
             "label": "Blog",
@@ -39,9 +24,9 @@
             "url": "https://devblogs.microsoft.com/microsoft365dev/"
           },
           {
-            "label": "Samples gallery",
-            "description": "Microsoft 365 & Copilot sample solutions",
-            "url": "https://adoption.microsoft.com/sample-solution-gallery/"
+            "label": "Videos",
+            "description": "Microsoft 365 Developer on YouTube",
+            "url": "https://www.youtube.com/@Microsoft365Developer"
           }
         ]
       }
@@ -71,7 +56,7 @@
     "social": [
       { "label": "GitHub", "icon": "github", "url": "https://github.com/microsoft/copilot-extensibility" },
       { "label": "YouTube", "icon": "youtube", "url": "https://www.youtube.com/@Microsoft365Developer" },
-      { "label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/showcase/microsoft-365-dev/" },
+      { "label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/showcase/microsoft365dev/" },
       { "label": "X", "icon": "x", "url": "https://x.com/Microsoft365Dev" }
     ],
     "columns": [
@@ -81,18 +66,16 @@
           { "label": "Learn", "url": "#learning-paths" },
           { "label": "Build", "url": "#featured" },
           { "label": "Technologies", "url": "#technologies" },
-          { "label": "Community", "url": "#community" },
-          { "label": "Resources", "url": "#ecosystem" }
+          { "label": "Community", "url": "#community" }
         ]
       },
       {
         "title": "Resources",
         "links": [
           { "label": "Documentation", "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/" },
-          { "label": "GitHub repos", "url": "https://github.com/search?q=org%3Amicrosoft+copilot+extensibility&type=repositories" },
-          { "label": "Cookbooks", "url": "https://github.com/search?q=org%3Amicrosoft+copilot+cookbook&type=repositories" },
+          { "label": "Blog", "url": "https://devblogs.microsoft.com/microsoft365dev/" },
           { "label": "Videos", "url": "https://www.youtube.com/@Microsoft365Developer" },
-          { "label": "Blog", "url": "https://devblogs.microsoft.com/microsoft365dev/" }
+          { "label": "Samples gallery", "url": "https://adoption.microsoft.com/sample-solution-gallery/" }
         ]
       },
       {
@@ -101,7 +84,7 @@
           { "label": "Get help", "url": "https://learn.microsoft.com/answers/" },
           { "label": "Report an issue", "url": "https://github.com/microsoft/copilot-extensibility/issues/new" },
           { "label": "Feedback", "url": "https://github.com/microsoft/copilot-extensibility/discussions" },
-          { "label": "Contribute", "url": "https://github.com/microsoft/copilot-extensibility/blob/main/README.md#contributing" }
+          { "label": "License", "url": "https://github.com/microsoft/copilot-extensibility/blob/main/LICENSE" }
         ]
       }
     ],

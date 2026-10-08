@@ -12,9 +12,9 @@
       "links": [
         { "label": "Microsoft 365 & Power Platform Community", "url": "https://pnp.github.io/" },
         { "label": "Global AI Community", "url": "https://globalai.community/" },
-        { "label": "Copilot Developer Camp", "url": "https://microsoft.github.io/copilot-camp/" },
-        { "label": "Agents League", "url": "https://github.com/search?q=agents+league&type=repositories" },
-        { "label": "Microsoft IQ Series", "url": "https://learn.microsoft.com/search/?terms=Microsoft%20IQ" }
+        { "label": "Agents Academy", "url": "https://aka.ms/agentacademy/" },
+        { "label": "Copilot Developer Camp", "url": "https://aka.ms/copilotdevcamp/" },
+        { "label": "Microsoft IQ Series", "url": "https://aka.ms/iq-series/" }
       ]
     },
     {
@@ -22,10 +22,10 @@
       "accent": "purple",
       "illustration": "calendar",
       "links": [
-        { "label": "Fly with Copilot", "url": "https://developer.microsoft.com/en-us/reactor/" },
+        { "label": "Fly with Copilot", "url": "https://developer.microsoft.com/reactor/" },
         { "label": "Copilot Dev Camp Summit", "url": "https://microsoft.github.io/copilot-camp/" },
         { "label": "Copilot Extensibility Monthly Community Call", "url": "https://aka.ms/m365pnp/community" },
-        { "label": "Workshops and Hackathons", "url": "https://developer.microsoft.com/en-us/reactor/" },
+        { "label": "Workshops and Hackathons", "url": "https://developer.microsoft.com/reactor/" },
         { "label": "Community Webinars", "url": "https://pnp.github.io/#community-calls" }
       ]
     },

@@ -6,28 +6,28 @@
   },
   "items": [
     {
-      "title": "Maker path",
+      "title": "Make",
       "description": "Start building in minutes with low-code tools and guided experiences.",
       "icon": "wand",
       "accent": "green",
       "illustration": "blocks",
-      "link": { "label": "Start learning", "url": "https://microsoft.github.io/copilot-camp/pages/make/" }
+      "link": { "label": "Agent Academy", "url": "https://aka.ms/agentacademy/" }
     },
     {
-      "title": "Developer path",
+      "title": "Develop",
       "description": "Deep dive into extensibility, APIs, plugins and agent development.",
       "icon": "terminal",
       "accent": "purple",
       "illustration": "code",
-      "link": { "label": "Start learning", "url": "https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/" }
+      "link": { "label": "Copilot Dev Camp", "url": "https://aka.ms/CopilotDevCamp/" }
     },
     {
-      "title": "Architect path",
-      "description": "Design scalable, secure and governed Copilot solutions.",
-      "icon": "compass",
+      "title": "Govern",
+      "description": "Learn how to govern Copilot solutions effectively.",
+      "icon": "shield",
       "accent": "blue",
       "illustration": "cubes",
-      "link": { "label": "Start learning", "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/decision-guide" }
+      "link": { "label": "Agent 365", "url": "https://learn.microsoft.com/microsoft-agent-365/overview" }
     }
   ]
 }

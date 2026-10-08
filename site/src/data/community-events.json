@@ -5,19 +5,18 @@
   },
   "firstPartyEvents": {
     "title": "Upcoming events",
-    "viewAll": { "label": "View all events", "url": "https://developer.microsoft.com/en-us/reactor/" },
-    "footerLink": { "label": "Explore all community calls, webinars and events", "url": "https://pnp.github.io/#community-calls" },
+    "footerLink": { "label": "Explore all community calls, webinars and events", "url": "https://pnp.github.io/#events" },
     "hidePast": false,
     "sortByDate": true,
     "items": [
       {
         "title": "Fly with Copilot",
-        "description": "Live demos and deep dives from the product team.",
+        "description": "In-person events with live demos and deep dives from Microsoft and the community.",
         "icon": "send",
         "accent": "purple",
         "organizer": "Microsoft",
-        "date": "2026-10-21",
-        "link": { "label": "Register", "url": "https://developer.microsoft.com/en-us/reactor/" }
+        "date": "Multiple dates",
+        "link": { "label": "Explore", "url": "https://aka.ms/flywithcopilot/" }
       },
       {
         "title": "Copilot Dev Camp Summit",
@@ -25,9 +24,9 @@
         "icon": "mountain",
         "accent": "green",
         "organizer": "Copilot Extensibility team",
-        "date": "2026-11-10",
-        "endDate": "2026-11-11",
-        "link": { "label": "Learn more", "url": "https://microsoft.github.io/copilot-camp/" }
+        "date": "2026-12-16",
+        "endDate": "2026-12-16",
+        "link": { "label": "Register", "url": "https://aka.ms/CopilotDevCamp/Summit/" }
       },
       {
         "title": "Copilot Extensibility Monthly Community Call",
@@ -35,14 +34,22 @@
         "icon": "calendar",
         "accent": "orange",
         "organizer": "Copilot Extensibility team",
-        "date": "2026-10-28",
-        "link": { "label": "Add to calendar", "url": "https://aka.ms/m365pnp/community" }
+        "date": "2nd Wed of every month 8 AM PT",
+        "link": { "label": "Add to calendar", "url": "https://aka.ms/community/CopilotExtensibility-call-invite" }
+      },
+      {
+        "title": "Microsoft IQ Live",
+        "description": "Bi-weekly live sessions on Microsoft IQ.",
+        "icon": "video",
+        "accent": "blue",
+        "organizer": "Copilot Extensibility team",
+        "date": "Bi-weekly",
+        "link": { "label": "Register", "url": "https://aka.ms/MicrosoftIQLive" }
       }
     ]
   },
   "communityEvents": {
     "title": "From the community",
-    "viewAll": { "label": "View all", "url": "https://pnp.github.io/" },
     "items": [
       {
         "title": "Microsoft 365 & Power Platform Community",
@@ -50,7 +57,6 @@
         "icon": "globe",
         "accent": "blue",
         "organizer": "Microsoft 365 & Power Platform Community",
-        "dateLabel": "Weekly calls",
         "link": { "label": "Visit community", "url": "https://pnp.github.io/" }
       },
       {
@@ -62,12 +68,12 @@
         "link": { "label": "Visit community", "url": "https://globalai.community/" }
       },
       {
-        "title": "Community champions",
-        "description": "Meet the champions driving Copilot extensibility forward.",
-        "icon": "award",
-        "accent": "orange",
-        "organizer": "Community",
-        "link": { "label": "Meet the champions", "url": "https://mvp.microsoft.com/" }
+        "title": "Samples gallery",
+        "description": "Microsoft 365 & Copilot sample solutions",
+        "icon": "collection",
+        "accent": "teal",
+        "organizer": "Microsoft",
+        "link": { "label": "Visit gallery", "url": "https://adoption.microsoft.com/sample-solution-gallery/" }
       }
     ]
   }

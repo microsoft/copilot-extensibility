@@ -12,16 +12,24 @@ function parse(date: string): Date {
   return new Date(`${date}T00:00:00Z`);
 }
 
+export function isIsoDate(date: string | undefined): date is string {
+  if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+
+  const parsed = parse(date);
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().startsWith(date);
+}
+
 /**
  * Formats an event date or date range, e.g. "May 21, 2026" or "Jun 10–11, 2026".
- * `dateLabel` always wins, which allows free text such as "Monthly".
+ * Free-text date values are returned unchanged. `dateLabel` remains supported for compatibility.
  */
 export function formatEventDate(item: Pick<EventItem, 'date' | 'endDate' | 'dateLabel'>): string | undefined {
   if (item.dateLabel) return item.dateLabel;
   if (!item.date) return undefined;
+  if (!isIsoDate(item.date)) return item.date;
 
   const start = parse(item.date);
-  if (!item.endDate || item.endDate === item.date) return fullFormatter.format(start);
+  if (!isIsoDate(item.endDate) || item.endDate === item.date) return fullFormatter.format(start);
 
   const end = parse(item.endDate);
   const sameYear = start.getUTCFullYear() === end.getUTCFullYear();
@@ -41,16 +49,18 @@ export function prepareEvents(items: EventItem[], options: { hidePast?: boolean;
   if (options.hidePast) {
     result = result.filter((item) => {
       const last = item.endDate ?? item.date;
-      return !last || parse(last) >= today;
+      return !isIsoDate(last) || parse(last) >= today;
     });
   }
   if (options.sortByDate) {
-    // Undated items (recurring initiatives) keep their relative order after dated ones.
+    // Undated and free-text items keep their relative order after dated ones.
     result.sort((a, b) => {
-      if (!a.date && !b.date) return 0;
-      if (!a.date) return 1;
-      if (!b.date) return -1;
-      return parse(a.date).getTime() - parse(b.date).getTime();
+      const aDate = a.date;
+      const bDate = b.date;
+      if (!isIsoDate(aDate) && !isIsoDate(bDate)) return 0;
+      if (!isIsoDate(aDate)) return 1;
+      if (!isIsoDate(bDate)) return -1;
+      return parse(aDate).getTime() - parse(bDate).getTime();
     });
   }
   return result;

@@ -108,11 +108,23 @@ export interface QuickLinksConfig {
 // featured-content.json -> FeaturedContent.astro
 // ---------------------------------------------------------------------------
 
+export const FEATURED_CONTENT_TYPES = ['Cookbook', 'Blog', 'Lab', 'News', 'Article', 'Website'] as const;
+
+export type FeaturedContentType = (typeof FEATURED_CONTENT_TYPES)[number];
+
+export function parseFeaturedContentType(value: string): FeaturedContentType {
+  const type = FEATURED_CONTENT_TYPES.find((candidate) => candidate === value);
+  if (!type) {
+    throw new Error(`Unsupported featured content type "${value}". Expected one of: ${FEATURED_CONTENT_TYPES.join(', ')}.`);
+  }
+  return type;
+}
+
 export interface FeaturedContentConfig {
   heading: SectionHeading;
   items: Array<{
-    /** Content type shown as a badge, e.g. BLOG, VIDEO, LAB, COOKBOOK, SAMPLE. */
-    type: string;
+    /** Content type shown as a badge. */
+    type: FeaturedContentType;
     title: string;
     description: string;
     icon: IconName;
@@ -167,11 +179,11 @@ export interface EventItem {
   accent: Accent;
   /** Organizer name, shown as a tooltip and used by the search index. */
   organizer?: string;
-  /** ISO date (YYYY-MM-DD). Optional for recurring initiatives/communities. */
+  /** ISO date (YYYY-MM-DD) or free-text schedule. Optional for recurring initiatives/communities. */
   date?: string;
   /** ISO end date for multi-day events. */
   endDate?: string;
-  /** Free text that replaces the formatted date (e.g. "Monthly", "Every Tuesday"). */
+  /** Legacy free-text date override. Prefer a free-text `date` value. */
   dateLabel?: string;
   link: Link;
 }

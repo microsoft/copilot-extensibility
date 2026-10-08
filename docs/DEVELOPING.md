@@ -156,10 +156,27 @@ page:
 | Links (`url`) | `https://…` for external resources (they open in a new tab automatically); `#section-id` to jump to a section of the page; `/path` for files in `site/public/` or other pages of this site (the base path is added automatically, **don't** include `/copilot-extensibility`). |
 | `external` | Optional. Set `false` to open an external link in the same tab, or `true` to open an internal link in a new tab. |
 | `icon` | The name of an icon defined in [`Icon.astro`](../site/src/components/Icon.astro), e.g. `puzzle`, `code`, `users`, `calendar`, `github`. Unknown names fall back to a generic icon and print a warning in the terminal. |
+| Featured content `type` | One of `Cookbook`, `Blog`, `Lab`, `News`, `Article`, `Website`. |
 | `accent` | One of `purple`, `blue`, `green`, `orange`, `teal`, `pink`, `indigo`, `red`, `yellow`, `gray`. |
 | `illustration` | `blocks`, `cubes`, `code` (learning paths) or `people`, `calendar`, `folder` (ecosystem). |
-| Dates (`date`, `endDate`) | ISO format `YYYY-MM-DD`. Ranges are formatted automatically (`Nov 10–11, 2026`). Use `dateLabel` for free text such as `"Monthly"`. |
+| Dates (`date`, `endDate`) | Use ISO format `YYYY-MM-DD` for dated events. Ranges are formatted automatically (`Nov 10–11, 2026`). The `date` property also accepts free text such as `"Monthly"`; free-text events are not sorted or filtered as dated events. |
 | Images | Put the file in `site/public/` (e.g. `site/public/logos/mcp.svg`) and reference it as `/logos/mcp.svg`. |
+
+#### Supported icons
+
+Use any of the following names for an `icon` property:
+
+- **Interface and navigation:** `arrow-right`, `chevron-down`, `close`, `compass`, `download`, `external`, `link`,
+  `menu`, `moon`, `search`, `settings`, `sun`
+- **Content, media and learning:** `article`, `book-open`, `bookmark`, `collection`, `file-text`, `flask`,
+  `graduation-cap`, `lightbulb`, `microphone`, `newspaper`, `play-circle`, `podcast`, `presentation`, `tutorial`,
+  `video`
+- **Development and technology:** `api`, `bot`, `box`, `brain`, `cloud`, `code`, `cpu`, `cubes`, `database`,
+  `git-branch`, `grid`, `hexagon`, `layout`, `monitor`, `network`, `package`, `plug`, `puzzle`, `rocket`, `shield`,
+  `smartphone`, `spark`, `sparkles`, `terminal`, `wand`, `wrench`
+- **Community, events and general use:** `award`, `calendar`, `chat`, `folder`, `globe`, `mountain`, `send`, `user`,
+  `users`
+- **Brands:** `github`, `linkedin`, `x`, `youtube`
 
 ### 4.3 Examples
 

@@ -5,7 +5,7 @@
  */
 import type { EventGroup as EventGroupConfig } from '../types/config';
 import Icon from './Icon.astro';
-import { formatEventDate, prepareEvents } from '../utils/dates';
+import { formatEventDate, isIsoDate, prepareEvents } from '../utils/dates';
 import { linkAttrs, resolveUrl } from '../utils/url';
 
 interface Props {
@@ -46,7 +46,7 @@ const items = prepareEvents(group.items, { hidePast: group.hidePast, sortByDate:
                 <p>{item.description}</p>
               </div>
               <div class="event-meta">
-                {when && (item.date ? <time datetime={item.date}>{when}</time> : <span class="event-when">{when}</span>)}
+                {when && (isIsoDate(item.date) ? <time datetime={item.date}>{when}</time> : <span class="event-when">{when}</span>)}
                 <a class="link-arrow" href={resolveUrl(item.link.url)} {...linkAttrs(item.link.url, item.link.external)}>
                   {item.link.label}
                   <Icon name="arrow-right" size={14} />

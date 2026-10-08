@@ -34,18 +34,22 @@ import learningPathsJson from '../data/learning-paths.json';
 import communityEventsJson from '../data/community-events.json';
 import ecosystemJson from '../data/ecosystem.json';
 import { buildSearchIndex } from '../utils/search';
+import { parseFeaturedContentType } from '../types/config';
 
 // Typed views over the JSON files: `astro check` fails if a JSON file doesn't match its contract.
 const navigation: NavigationConfig = navigationJson;
 const hero: HeroConfig = heroJson;
 const quickLinks: QuickLinksConfig = quickLinksJson;
-const featured: FeaturedContentConfig = featuredJson;
+const featured: FeaturedContentConfig = {
+  ...featuredJson,
+  items: featuredJson.items.map((item) => ({ ...item, type: parseFeaturedContentType(item.type) })),
+};
 const technologies: TechnologiesConfig = technologiesJson;
 const learningPaths: LearningPathsConfig = learningPathsJson;
 const events: CommunityEventsConfig = communityEventsJson;
 const ecosystem: EcosystemConfig = ecosystemJson;
 
-const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technologies, learningPaths, events, ecosystem });
+const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technologies, learningPaths, events }); // , ecosystem
 ---
 
 <BaseLayout>
@@ -57,7 +61,7 @@ const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technol
     <Technologies config={technologies} />
     <LearningPaths config={learningPaths} />
     <CommunityEvents config={events} />
-    <Ecosystem config={ecosystem} />
+    <!--<Ecosystem config={ecosystem} />-->
   </main>
   <Footer config={navigation.footer} />
 </BaseLayout>

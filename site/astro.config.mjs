@@ -11,6 +11,9 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'ignore',
+  devToolbar: {
+    enabled: false,
+  },
   build: {
     assets: 'assets',
   },

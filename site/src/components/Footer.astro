@@ -3,8 +3,7 @@
  * Footer — site footer.
  * Config: `navigation.json` → `footer` section (the same file that configures the Header).
  *
- * Layout: brand + tagline + social icons, link columns, a "communities" column,
- * and a bottom bar with copyright ("{year}" is replaced at build time) and legal links.
+ * Layout: brand + tagline + social icons, link columns and a "communities" column.
  */
 import type { FooterConfig } from '../types/config';
 import Icon from './Icon.astro';
@@ -15,8 +14,7 @@ interface Props {
 }
 
 const { config } = Astro.props;
-const { brand, social, columns, communities, legal } = config;
-const copyright = legal.copyright.replace('{year}', String(new Date().getFullYear()));
+const { brand, social, columns, communities } = config;
 ---
 
 <footer class="site-footer">
@@ -74,21 +72,8 @@ const copyright = legal.copyright.replace('{year}', String(new Date().getFullYea
     </nav>
   </div>
 
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <span>{copyright}</span>
-      <ul>
-        {
-          legal.links.map((link) => (
-            <li>
-              <a href={resolveUrl(link.url)} {...linkAttrs(link.url, link.external)}>
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+  <div class="container visitor-counter">
+    <img src="https://m365-visitor-stats.azurewebsites.net/Copilot-Extensibility" alt="Visitors Counter" />
   </div>
 </footer>
 
@@ -157,28 +142,10 @@ const copyright = legal.copyright.replace('{year}', String(new Date().getFullYea
     font-weight: 500;
     font-size: 0.85rem;
   }
-  .footer-bottom {
-    border-top: 1px solid var(--chrome-border);
-  }
-  .footer-bottom-inner {
+  .visitor-counter {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 0.5rem 1.5rem;
-    padding-block: 1rem;
-    font-size: 0.78rem;
-  }
-  .footer-bottom ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-  }
-  .footer-bottom a {
-    color: var(--chrome-muted);
-  }
-  .footer-bottom a:hover {
-    color: #fff;
+    padding-bottom: 1rem;
   }
 
   @media (max-width: 960px) {
