@@ -108,7 +108,7 @@ export interface QuickLinksConfig {
 // featured-content.json -> FeaturedContent.astro
 // ---------------------------------------------------------------------------
 
-export const FEATURED_CONTENT_TYPES = ['Cookbook', 'Blog', 'Lab', 'News', 'Article', 'Website'] as const;
+export const FEATURED_CONTENT_TYPES = ['Cookbook', 'Blog', 'Lab', 'News', 'Article', 'Website', 'Video'] as const;
 
 export type FeaturedContentType = (typeof FEATURED_CONTENT_TYPES)[number];
 
