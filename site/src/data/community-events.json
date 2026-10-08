@@ -45,6 +45,17 @@
         "organizer": "Copilot Extensibility team",
         "date": "Bi-weekly",
         "link": { "label": "Register", "url": "https://aka.ms/MicrosoftIQLive" }
+      },
+      {
+        "title": "WorkIQ Developer Tools: Copilot & Cowork Extensibility Series",
+        "description": "Discover how to extend Microsoft Copilot and Cowork with custom plugins, enterprise integrations and intelligent experiences using WorkIQ Developer Tools. In this three-part series, learn how to connect enterprise knowledge, systems and actions to Copilot experiences.",
+        "icon": "video",
+        "accent": "purple",
+        "organizer": "Microsoft Reactor",
+        "date": "2026-10-21",
+        "endDate": "2026-11-04",
+        "dateLabel": "Oct 21-Nov 4 · Every Wednesday, 9 AM PT",
+        "link": { "label": "Register", "url": "https://aka.ms/wiqd/reactor-series" }
       }
     ]
   },
@@ -74,6 +85,14 @@
         "accent": "teal",
         "organizer": "Microsoft",
         "link": { "label": "Visit gallery", "url": "https://adoption.microsoft.com/sample-solution-gallery/" }
+      },
+      {
+        "title": "Copilot prompt library",
+        "description": "Community samples for Copilot skills, agents, instructions and prompts.",
+        "icon": "collection",
+        "accent": "teal",
+        "organizer": "Community",
+        "link": { "label": "Visit library", "url": "https://aka.ms/copilot-prompt-library" }
       }
     ]
   }
