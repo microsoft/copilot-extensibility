@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { config } = Astro.props;
-const { brand, social, columns, communities } = config;
+const { brand, social, columns } = config; // , communities
 ---
 
 <footer class="site-footer">
@@ -55,6 +55,7 @@ const { brand, social, columns, communities } = config;
       ))
     }
 
+<!--
     <nav class="footer-col footer-communities" aria-label={communities.title}>
       <h2>{communities.title}</h2>
       <ul>
@@ -70,6 +71,7 @@ const { brand, social, columns, communities } = config;
         }
       </ul>
     </nav>
+-->
   </div>
 
   <div class="container visitor-counter">
