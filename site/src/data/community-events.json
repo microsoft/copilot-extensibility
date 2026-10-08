@@ -48,7 +48,7 @@
       },
       {
         "title": "WorkIQ Developer Tools: Copilot & Cowork Extensibility Series",
-        "description": "Discover how to extend Microsoft Copilot and Cowork with custom plugins, enterprise integrations and intelligent experiences using WorkIQ Developer Tools. In this three-part series, learn how to connect enterprise knowledge, systems and actions to Copilot experiences.",
+        "description": "Three-part series on extending Copilot and Cowork with WIQD.",
         "icon": "video",
         "accent": "purple",
         "organizer": "Microsoft Reactor",
