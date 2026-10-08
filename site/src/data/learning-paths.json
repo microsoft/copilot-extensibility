@@ -1,8 +1,7 @@
 {
   "heading": {
     "id": "learning-paths",
-    "title": "Recommended learning paths",
-    "viewAll": { "label": "View all paths", "url": "https://learn.microsoft.com/training/browse/?terms=copilot%20extensibility" }
+    "title": "Recommended learning paths"
   },
   "items": [
     {
