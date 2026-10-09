@@ -1,14 +1,17 @@
 ---
 /**
  * Videos — "Videos" section: a responsive grid of YouTube video thumbnails tagged by
- * technology area. Config: `video.json`. Each item only provides a YouTube `url`, `title` and
- * `technology`; the thumbnail image and the watch link are both derived from the URL at build
- * time (see `utils/youtube.ts`), so there is no separate thumbnail field to keep in sync.
+ * technology area. Config: `video.json`. Each item only provides a YouTube `url`, `title`,
+ * `technology` and an optional `kind` ("video" by default, or "playlist"); the thumbnail image
+ * and the watch link are both derived from the URL at build time (see `utils/youtube.ts`), so
+ * there is no separate thumbnail field to keep in sync. Playlists get a "Playlist" badge over the
+ * bottom-right of the thumbnail instead of a plain play button, so visitors can tell them apart
+ * at a glance (see §6.6 of docs/ARCHITECTURE.md).
  */
 import type { VideosConfig } from '../types/config';
 import Icon from './Icon.astro';
 import SectionHeader from './SectionHeader.astro';
-import { getYouTubeThumbnail } from '../utils/youtube';
+import { getYouTubePlaylistId, getYouTubeThumbnail } from '../utils/youtube';
 import { linkAttrs, resolveUrl } from '../utils/url';
 
 interface Props {
@@ -23,22 +26,39 @@ const { config } = Astro.props;
   <ul class="video-grid">
     {
       config.items.map((item) => {
+        const isPlaylist = item.kind === 'playlist';
+        if (isPlaylist && !getYouTubePlaylistId(item.url)) {
+          console.warn(`[Videos] "${item.title}" is marked "kind": "playlist" but its URL has no "list=" parameter: ${item.url}`);
+        }
         const thumbnail = getYouTubeThumbnail(item.url);
-        if (!thumbnail) console.warn(`[Videos] Could not derive a thumbnail from URL "${item.url}" (video "${item.title}").`);
+        if (!thumbnail) {
+          const hint = isPlaylist
+            ? ' For playlists, use a "watch?v=...&list=..." URL to a representative video so a thumbnail can be derived.'
+            : '';
+          console.warn(`[Videos] Could not derive a thumbnail from URL "${item.url}" (video "${item.title}").${hint}`);
+        }
         return (
-          <li class={`accent-${item.accent}`}>
+          <li class={`accent-${item.accent}`} data-kind={item.kind}>
             <a class="card card-interactive video-card" href={resolveUrl(item.url)} {...linkAttrs(item.url)}>
               <span class="video-thumb">
                 {thumbnail ? (
                   <img src={thumbnail} alt="" width="480" height="270" loading="lazy" />
                 ) : (
                   <span class="video-thumb-fallback" aria-hidden="true">
-                    <Icon name="video" size={28} />
+                    <Icon name={isPlaylist ? 'collection' : 'video'} size={28} />
                   </span>
                 )}
                 <span class="video-play" aria-hidden="true">
                   <Icon name="play-circle" size={34} />
                 </span>
+                {
+                  isPlaylist && (
+                    <span class="video-playlist-badge">
+                      <Icon name="collection" size={13} />
+                      Playlist
+                    </span>
+                  )
+                }
               </span>
               <span class="video-body">
                 <span class="badge">{item.technology}</span>
@@ -72,6 +92,7 @@ const { config } = Astro.props;
   .video-card:hover {
     color: var(--text);
   }
+
   .video-thumb {
     position: relative;
     display: block;
@@ -108,6 +129,22 @@ const { config } = Astro.props;
   .video-card:hover .video-play :global(.icon) {
     transform: scale(1.08);
     background: rgba(17, 24, 39, 0.65);
+  }
+  .video-playlist-badge {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    background: rgba(17, 24, 39, 0.78);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
   .video-body {
     display: flex;

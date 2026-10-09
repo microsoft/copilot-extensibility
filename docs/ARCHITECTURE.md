@@ -83,7 +83,7 @@ Unless stated otherwise, paths such as `src/data/…` in this document are relat
             ├── url.ts                 # base-path aware URL resolution, external link attrs
             ├── dates.ts               # event date formatting, sorting & filtering
             ├── search.ts              # builds the header search index from the JSON files
-            └── youtube.ts             # YouTube video ID extraction + thumbnail URL builder
+            └── youtube.ts             # YouTube video/playlist ID extraction + thumbnail URL builder
 ```
 
 ## 4. How a page is rendered
@@ -295,11 +295,11 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 
 ### 6.6 `Videos.astro` — videos
 
-- **Purpose:** grid of YouTube videos (demos, tutorials, sessions), each tagged with the technology area it
-  covers. Placed right after Featured content.
+- **Purpose:** grid of YouTube videos and playlists (demos, tutorials, sessions), each tagged with the technology
+  area it covers. Placed right after Featured content.
 - **Config:** `video.json` (`VideosConfig`): `heading` (with `viewAll`) and `items[]` with `title`, `technology`
   (badge text), `accent` (badge/card color — reuse the same accent as the matching entry in `technologies.json`
-  for consistency) and `url` (the canonical YouTube URL).
+  for consistency), optional `kind` (`"video"` default, or `"playlist"`) and `url` (the canonical YouTube URL).
 - **Inner workings:** `utils/youtube.ts` extracts the video ID from `url` (supports `watch`, `youtu.be`, `shorts`
   and `embed` links) and builds the thumbnail URL (`https://i.ytimg.com/vi/<id>/hqdefault.jpg`, which exists for
   every public video) — there is no separate thumbnail field to keep in sync. Each card shows the thumbnail with a
@@ -307,6 +307,16 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
   links to the YouTube URL and opens in a new tab. If a URL can't be parsed, a neutral icon tile is shown instead
   of the thumbnail and a warning is logged at build time. Same responsive `auto-fill` grid as Featured content
   (4 columns by default on a full-width container, squeezing to 3 → 2 → 1 as the viewport narrows).
+  - **Playlists** (`"kind": "playlist"`) get two CSS-only "sheets" (`::before`/`::after` on `.video-thumb`) layered
+    at the top edge of the *thumbnail itself* — not above the card — so a playlist card occupies exactly the same
+    box as a single-video card; only the top few pixels of the thumbnail image are covered. A dark "Playlist" pill
+    (`Icon` name `collection`) sits over the bottom-right of the thumbnail, so visitors can tell a playlist apart
+    from a single video at a glance — inspired by YouTube's own stacked-thumbnail treatment. The thumbnail is
+    still derived from a video ID, so for playlists `url` should be a `watch?v=...&list=...` link to a
+    representative video (typically the first one); a bare `playlist?list=...` URL has no derivable thumbnail and
+    falls back to a generic icon. `parseVideoKind()` (in `types/config.ts`) validates the `kind` value at build
+    time and defaults missing values to `"video"`; a separate build-time check in `Videos.astro` warns if a
+    `"playlist"` item's URL has no `list=` parameter (`getYouTubePlaylistId()`).
 
 ### 6.7 `Technologies.astro` — technologies at a glance
 

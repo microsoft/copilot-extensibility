@@ -1,5 +1,5 @@
 /**
- * Helpers to work with YouTube URLs: extracting the video ID and building the thumbnail URL.
+ * Helpers to work with YouTube URLs: extracting the video/playlist ID and building the thumbnail URL.
  * Used by `Videos.astro` so `video.json` only needs to provide the canonical YouTube URL —
  * no separate thumbnail field to keep in sync.
  */
@@ -21,6 +21,20 @@ export function getYouTubeId(url: string): string | undefined {
     if (parsed.pathname === '/watch') return parsed.searchParams.get('v') ?? undefined;
     const match = parsed.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/);
     if (match) return match[1];
+  }
+  return undefined;
+}
+
+/** Extracts the `list` query parameter (playlist ID) from any YouTube URL, if present. */
+export function getYouTubePlaylistId(url: string): string | undefined {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./, '');
+    if (host === 'youtu.be' || host === 'youtube.com' || host === 'youtube-nocookie.com' || host === 'm.youtube.com') {
+      return parsed.searchParams.get('list') ?? undefined;
+    }
+  } catch {
+    /* malformed URL */
   }
   return undefined;
 }

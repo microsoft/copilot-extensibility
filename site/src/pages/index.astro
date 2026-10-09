@@ -40,7 +40,7 @@ import communityEventsJson from '../data/community-events.json';
 import ecosystemJson from '../data/ecosystem.json';
 import teamJson from '../data/team.json';
 import { buildSearchIndex } from '../utils/search';
-import { parseFeaturedContentType } from '../types/config';
+import { parseFeaturedContentType, parseVideoKind } from '../types/config';
 
 // Typed views over the JSON files: `astro check` fails if a JSON file doesn't match its contract.
 const navigation: NavigationConfig = navigationJson;
@@ -50,7 +50,10 @@ const featured: FeaturedContentConfig = {
   ...featuredJson,
   items: featuredJson.items.map((item) => ({ ...item, type: parseFeaturedContentType(item.type) })),
 };
-const videos: VideosConfig = videoJson;
+const videos: VideosConfig = {
+  ...videoJson,
+  items: videoJson.items.map((item) => ({ ...item, kind: parseVideoKind((item as { kind?: string }).kind) })),
+};
 const technologies: TechnologiesConfig = technologiesJson;
 const learningPaths: LearningPathsConfig = learningPathsJson;
 const events: CommunityEventsConfig = communityEventsJson;

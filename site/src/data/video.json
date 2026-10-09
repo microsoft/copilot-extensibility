@@ -13,49 +13,57 @@
       "title": "Copilot Dev Camp Summit - Fall Edition 2026",
       "technology": "Microsoft Copilot",
       "accent": "indigo",
+      "kind": "video",
       "url": "https://www.youtube.com/watch?v=B5ywcwSkvBA"
     },
     {
-      "title": "Architecting Context-Aware Agents with the Microsoft IQ Stack",
+      "title": "Microsoft IQ Live - Series",
       "technology": "Microsoft IQ",
-      "accent": "pink",
-      "url": "https://www.youtube.com/watch?v=YOHnkoQ4Jic"
-    },
-    {
-      "title": "Connecting Agents to Your Productivity Data with Work IQ",
-      "technology": "Work IQ",
       "accent": "green",
-      "url": "https://www.youtube.com/watch?v=8RpTv29YkOc"
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=YOHnkoQ4Jic&list=PLmsFUfdnGr3wAd0ACGlLB6kz1RR4pMFeY&index=1"
     },
     {
-      "title": "Copilot Extensibility Community Call - September 9th, 2026",
+      "title": "Copilot Extensibility Monthly Community Calls",
       "technology": "Copilot Community",
-      "accent": "indigo",
-      "url": "https://www.youtube.com/watch?v=bxtiJ47s6io"
+      "accent": "blue",
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=bxtiJ47s6io&list=PLR9nK3mnD-OWvoIQ01EuzFCJU9r6V_ML3"
+    },
+    {
+      "title": "The Microsoft IQ Series",
+      "technology": "Microsoft IQ",
+      "accent": "orange",
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=Yd9xDJUvA2o&list=PLcCa-RnyxkMM&index=1"
+    },
+    {
+      "title": "Copilot in SharePoint",
+      "technology": "Microsoft Copilot",
+      "accent": "green",
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=SlAOT139YvA&list=PLKAb1bip0zk4&index=1"
     },
     {
       "title": "Skill up on Copilot Studio with April Dunnam and Jack Rowbotham!",
       "technology": "Copilot Studio",
-      "accent": "indigo",
+      "accent": "purple",
+      "kind": "video",
       "url": "https://www.youtube.com/watch?v=g9oCS5byDB4"
     },
     {
-      "title": "Foundry IQ: Unlocking Knowledge for Your Agents",
-      "technology": "Foundry IQ",
-      "accent": "teal",
-      "url": "https://www.youtube.com/watch?v=Yd9xDJUvA2o"
+      "title": "Work IQ",
+      "technology": "Microsoft IQ",
+      "accent": "orange",
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=TXjoUOOqXd4&list=PLR9nK3mnD-OWw6WqBT7fmxJxEHmyQzUce&index=1"
     },
     {
-      "title": "Work IQ: Data, Context, and Tools at Scale",
-      "technology": "Work IQ",
-      "accent": "green",
-      "url": "https://www.youtube.com/watch?v=yj9JX08cxtw"
-    },
-    {
-      "title": "Building UX components for Copilot - Retail Tracking Scenario",
-      "technology": "Copilot UX components",
-      "accent": "indigo",
-      "url": "https://www.youtube.com/watch?v=um7TqcqEv_k"
+      "title": "Skill Up: Adding Skills to Your Agent in Microsoft 365 Copilot",
+      "technology": "Work IQ Dev Tools",
+      "accent": "orange",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=JKeNgEYv63k"
     }
   ]
 }

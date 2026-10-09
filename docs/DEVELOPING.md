@@ -163,6 +163,7 @@ page:
 | `illustration` | `blocks`, `cubes`, `code` (learning paths) or `people`, `calendar`, `folder` (ecosystem). |
 | Dates (`date`, `endDate`) | Use ISO format `YYYY-MM-DD` for dated events. Ranges are formatted automatically (`Nov 10–11, 2026`). The `date` property also accepts free text such as `"Monthly"`; free-text events are not sorted or filtered as dated events. |
 | Video `url` | A canonical YouTube URL (`watch?v=`, `youtu.be/`, `/shorts/` or `/embed/`). The thumbnail image is derived from it at build time — don't add a separate thumbnail field. |
+| Video `kind` | Optional. `"video"` (default) or `"playlist"` — playlists get a stacked-sheet thumbnail (same card height as a regular video) and a "Playlist" badge. For a playlist, `url` should include `&list=<playlist-id>` in addition to a representative `v=<video-id>`, so a thumbnail can still be derived. |
 | Team `picture` | Path to a square headshot in `site/public/team/` (e.g. `/team/jane-doe.png`), rendered as a circle. |
 | Images | Put the file in `site/public/` (e.g. `site/public/logos/mcp.svg`) and reference it as `/logos/mcp.svg`. |
 
@@ -232,6 +233,24 @@ a consistent badge color across the two sections:
   "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 }
 ```
+
+**Add a playlist** (`video.json` → `items`). Add `"kind": "playlist"` and include `&list=<playlist-id>` in the URL
+together with a representative video (e.g. the first one), so a thumbnail can still be derived; the card then gets
+a stacked-sheet thumbnail (same height as a regular video card) and a "Playlist" badge instead of a plain play
+button:
+
+```json
+{
+  "title": "Copilot Extensibility Monthly Community Calls",
+  "technology": "Copilot Community",
+  "accent": "indigo",
+  "kind": "playlist",
+  "url": "https://www.youtube.com/watch?v=bxtiJ47s6io&list=PLR9nK3mnD-OWvoIQ01EuzFCJU9r6V_ML3"
+}
+```
+
+A bare `playlist?list=...` URL (with no representative video) has no derivable thumbnail; `npm run build` then
+prints a warning and the card falls back to a generic icon.
 
 **Add a team member** (`team.json` → `members`). Crop the photo to a square (any size — it's resized by CSS) before
 placing it in `site/public/team/`:

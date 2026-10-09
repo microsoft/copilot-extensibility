@@ -18,7 +18,7 @@ evolving Copilot extensibility ecosystem.
 | Hero | Headline and main calls to action | [`site/src/data/hero.json`](site/src/data/hero.json) |
 | Quick links | Learn · Build · Technologies · Community entry points | [`site/src/data/quick-links.json`](site/src/data/quick-links.json) |
 | Featured content | Curated blogs, videos, labs and cookbooks | [`site/src/data/featured-content.json`](site/src/data/featured-content.json) |
-| Videos | YouTube videos tagged by technology area | [`site/src/data/video.json`](site/src/data/video.json) |
+| Videos | YouTube videos and playlists tagged by technology area | [`site/src/data/video.json`](site/src/data/video.json) |
 | Technologies at a glance | The extensibility building blocks, linked to their docs | [`site/src/data/technologies.json`](site/src/data/technologies.json) |
 | Recommended learning paths | Maker, Developer and Architect paths | [`site/src/data/learning-paths.json`](site/src/data/learning-paths.json) |
 | Community & events | First-party events and community events/initiatives | [`site/src/data/community-events.json`](site/src/data/community-events.json) |

@@ -226,14 +226,37 @@ export interface EcosystemConfig {
 // video.json -> Videos.astro
 // ---------------------------------------------------------------------------
 
+export const VIDEO_KINDS = ['video', 'playlist'] as const;
+
+export type VideoKind = (typeof VIDEO_KINDS)[number];
+
+/** Validates a video `kind`, defaulting missing values to `"video"`. */
+export function parseVideoKind(value: string | undefined): VideoKind {
+  if (value === undefined) return 'video';
+  const kind = VIDEO_KINDS.find((candidate) => candidate === value);
+  if (!kind) {
+    throw new Error(`Unsupported video kind "${value}". Expected one of: ${VIDEO_KINDS.join(', ')}.`);
+  }
+  return kind;
+}
+
 export interface VideoItem {
   title: string;
   /** Technology area the video covers, shown as a badge (e.g. "Copilot Studio", "MCP"). */
   technology: string;
   /** Badge color. Reuse the same accent as the matching entry in `technologies.json` for consistency. */
   accent: Accent;
-  /** Canonical YouTube URL (watch, youtu.be, shorts or embed form). The thumbnail image and the
-   * "watch" link are both derived from it at build time — no separate thumbnail field needed. */
+  /**
+   * `"video"` (default) for a single video, or `"playlist"` to render it as a YouTube playlist:
+   * a stacked-card thumbnail and a "Playlist" badge instead of a plain play button.
+   */
+  kind?: VideoKind;
+  /**
+   * Canonical YouTube URL (watch, youtu.be, shorts or embed form). The thumbnail image and the
+   * "watch" link are both derived from it at build time — no separate thumbnail field needed.
+   * For `"kind": "playlist"`, use a `watch?v=...&list=...` link to a representative video so a
+   * thumbnail can still be derived; a bare `playlist?list=...` URL has no derivable thumbnail.
+   */
   url: string;
 }
 
