@@ -18,10 +18,12 @@ evolving Copilot extensibility ecosystem.
 | Hero | Headline and main calls to action | [`site/src/data/hero.json`](site/src/data/hero.json) |
 | Quick links | Learn · Build · Technologies · Community entry points | [`site/src/data/quick-links.json`](site/src/data/quick-links.json) |
 | Featured content | Curated blogs, videos, labs and cookbooks | [`site/src/data/featured-content.json`](site/src/data/featured-content.json) |
+| Videos | YouTube videos tagged by technology area | [`site/src/data/video.json`](site/src/data/video.json) |
 | Technologies at a glance | The extensibility building blocks, linked to their docs | [`site/src/data/technologies.json`](site/src/data/technologies.json) |
 | Recommended learning paths | Maker, Developer and Architect paths | [`site/src/data/learning-paths.json`](site/src/data/learning-paths.json) |
 | Community & events | First-party events and community events/initiatives | [`site/src/data/community-events.json`](site/src/data/community-events.json) |
 | Explore the ecosystem | Directory of communities, event series and resources | [`site/src/data/ecosystem.json`](site/src/data/ecosystem.json) |
+| Meet the team | Team member photos, names and roles | [`site/src/data/team.json`](site/src/data/team.json) |
 | Footer | Link columns, communities, social and legal links | [`site/src/data/navigation.json`](site/src/data/navigation.json) → `footer` |
 
 Every block is a reusable [Astro](https://astro.build) component driven by its own JSON configuration file, so the
@@ -45,7 +47,7 @@ See [docs/DEVELOPING.md](docs/DEVELOPING.md) for the full local development guid
 ## Updating the content
 
 1. Edit the JSON file of the block you want to change in [`site/src/data/`](site/src/data) (add an event, a featured item, a
-   technology, a link…).
+   video, a team member, a technology, a link…).
 2. Run `npm run check` to validate the file against its contract in [`site/src/types/config.ts`](site/src/types/config.ts).
 3. Open a pull request. Once merged into `main`, the site is rebuilt and published automatically by GitHub Actions.
 
@@ -57,7 +59,7 @@ docs/                            Architecture and publishing documentation
 site/                            The Astro project (everything needed to build the site)
 ├── astro.config.mjs             Site URL and base path
 ├── package.json                 Dependencies and npm scripts
-├── public/                      Static assets (logo, favicon)
+├── public/                      Static assets (logo, favicon, team photos)
 └── src/
     ├── data/                    JSON configuration — one file per landing-page block
     ├── components/              Astro components — one per block + shared building blocks
@@ -65,7 +67,7 @@ site/                            The Astro project (everything needed to build t
     ├── pages/index.astro        Landing page composing all components
     ├── styles/global.css        Design tokens, light/dark themes, accent colors
     ├── types/config.ts          TypeScript contracts for the JSON files
-    └── utils/                   URL, date and search helpers
+    └── utils/                   URL, date, search and YouTube helpers
 ```
 
 ## Documentation

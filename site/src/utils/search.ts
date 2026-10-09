@@ -6,6 +6,7 @@ import type {
   NavigationConfig,
   QuickLinksConfig,
   TechnologiesConfig,
+  VideosConfig,
 } from '../types/config';
 import { resolveUrl } from './url';
 
@@ -20,6 +21,7 @@ interface SearchSources {
   navigation?: NavigationConfig;
   quickLinks?: QuickLinksConfig;
   featured?: FeaturedContentConfig;
+  videos?: VideosConfig;
   technologies?: TechnologiesConfig;
   learningPaths?: LearningPathsConfig;
   events?: CommunityEventsConfig;
@@ -38,6 +40,7 @@ export function buildSearchIndex(sources: SearchSources): SearchEntry[] {
 
   sources.quickLinks?.items.forEach((i) => add(i.title, i.description, 'Section', i.link.url));
   sources.featured?.items.forEach((i) => add(i.title, i.description, i.type, i.link.url));
+  sources.videos?.items.forEach((i) => add(i.title, i.technology, 'Video', i.url));
   sources.technologies?.items.forEach((i) => add(i.name, i.description ?? '', 'Technology', i.url));
   sources.learningPaths?.items.forEach((i) => add(i.title, i.description, 'Learning path', i.link.url));
   if (sources.events) {
@@ -61,3 +64,4 @@ export function buildSearchIndex(sources: SearchSources): SearchEntry[] {
     return true;
   });
 }
+

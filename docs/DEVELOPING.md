@@ -137,10 +137,12 @@ page:
 | Hero banner | `hero.json` |
 | Learn · Build · Technologies · Community cards | `quick-links.json` |
 | Featured content | `featured-content.json` |
+| Videos | `video.json` |
 | Technologies at a glance | `technologies.json` |
 | Recommended learning paths | `learning-paths.json` |
 | Community & events | `community-events.json` → `firstPartyEvents` / `communityEvents` |
 | Explore the ecosystem | `ecosystem.json` |
+| Meet the team | `team.json` |
 
 ### 4.1 Typical workflow
 
@@ -160,6 +162,8 @@ page:
 | `accent` | One of `purple`, `blue`, `green`, `orange`, `teal`, `pink`, `indigo`, `red`, `yellow`, `gray`. |
 | `illustration` | `blocks`, `cubes`, `code` (learning paths) or `people`, `calendar`, `folder` (ecosystem). |
 | Dates (`date`, `endDate`) | Use ISO format `YYYY-MM-DD` for dated events. Ranges are formatted automatically (`Nov 10–11, 2026`). The `date` property also accepts free text such as `"Monthly"`; free-text events are not sorted or filtered as dated events. |
+| Video `url` | A canonical YouTube URL (`watch?v=`, `youtu.be/`, `/shorts/` or `/embed/`). The thumbnail image is derived from it at build time — don't add a separate thumbnail field. |
+| Team `picture` | Path to a square headshot in `site/public/team/` (e.g. `/team/jane-doe.png`), rendered as a circle. |
 | Images | Put the file in `site/public/` (e.g. `site/public/logos/mcp.svg`) and reference it as `/logos/mcp.svg`. |
 
 #### Supported icons
@@ -217,8 +221,28 @@ file doesn't matter. With `"hidePast": true`, events whose date has passed are d
   "url": "https://learn.microsoft.com/microsoft-365/agents-sdk/" }
 ```
 
-Grids are responsive, so adding or removing items never requires CSS changes. New items are also picked up by the
-header search automatically.
+**Add a video** (`video.json` → `items`). Reuse the same `accent` as the matching entry in `technologies.json` for
+a consistent badge color across the two sections:
+
+```json
+{
+  "title": "Build your first MCP server",
+  "technology": "MCP",
+  "accent": "pink",
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}
+```
+
+**Add a team member** (`team.json` → `members`). Crop the photo to a square (any size — it's resized by CSS) before
+placing it in `site/public/team/`:
+
+```json
+{ "name": "Jane Doe", "role": "Senior Cloud Advocate", "picture": "/team/jane-doe.png" }
+```
+
+Grids are responsive, so adding or removing items never requires CSS changes. New items in `featured-content.json`,
+`video.json`, `technologies.json`, `learning-paths.json` and `community-events.json` are also picked up by the header
+search automatically; team members aren't, since they don't link anywhere.
 
 ### 4.4 When validation fails
 

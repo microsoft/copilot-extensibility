@@ -10,6 +10,7 @@
       { "label": "Build", "url": "#featured" },
       { "label": "Technologies", "url": "#technologies" },
       { "label": "Events", "url": "#community" },
+      { "label": "Team", "url": "#team" },
       {
         "label": "Resources",
         "children": [
@@ -66,7 +67,8 @@
           { "label": "Learn", "url": "#learning-paths" },
           { "label": "Build", "url": "#featured" },
           { "label": "Technologies", "url": "#technologies" },
-          { "label": "Community", "url": "#community" }
+          { "label": "Community", "url": "#community" },
+          { "label": "Team", "url": "#team" }
         ]
       },
       {

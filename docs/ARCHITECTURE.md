@@ -52,21 +52,25 @@ Unless stated otherwise, paths such as `src/data/…` in this document are relat
         │   ├── hero.json
         │   ├── quick-links.json
         │   ├── featured-content.json
+        │   ├── video.json             # Videos section
         │   ├── technologies.json
         │   ├── learning-paths.json
         │   ├── community-events.json  # firstPartyEvents + communityEvents
-        │   └── ecosystem.json
+        │   ├── ecosystem.json
+        │   └── team.json              # Team section (end of page)
         ├── types/config.ts            # TypeScript contracts for every JSON file
         ├── components/                # ⬅ one component per block + shared building blocks
         │   ├── Header.astro           # navigation.json → header
         │   ├── Hero.astro             # hero.json
         │   ├── QuickLinks.astro       # quick-links.json
         │   ├── FeaturedContent.astro  # featured-content.json
+        │   ├── Videos.astro           # video.json
         │   ├── Technologies.astro     # technologies.json
         │   ├── LearningPaths.astro    # learning-paths.json
         │   ├── CommunityEvents.astro  # community-events.json
         │   ├── EventGroup.astro       # (shared) one group of events
         │   ├── Ecosystem.astro        # ecosystem.json
+        │   ├── Team.astro             # team.json
         │   ├── Footer.astro           # navigation.json → footer
         │   ├── SectionHeader.astro    # (shared) section title + "view all" link
         │   ├── Icon.astro             # (shared) named SVG icon set
@@ -78,7 +82,8 @@ Unless stated otherwise, paths such as `src/data/…` in this document are relat
         └── utils/
             ├── url.ts                 # base-path aware URL resolution, external link attrs
             ├── dates.ts               # event date formatting, sorting & filtering
-            └── search.ts              # builds the header search index from the JSON files
+            ├── search.ts              # builds the header search index from the JSON files
+            └── youtube.ts             # YouTube video ID extraction + thumbnail URL builder
 ```
 
 ## 4. How a page is rendered
@@ -90,10 +95,12 @@ flowchart TB
         HERO[hero.json]
         QL[quick-links.json]
         FC[featured-content.json]
+        VID[video.json]
         TECH[technologies.json]
         LP[learning-paths.json]
         CE[community-events.json]
         ECO[ecosystem.json]
+        TEAM[team.json]
         SITE[site.json]
     end
 
@@ -110,17 +117,19 @@ flowchart TB
     IDX -- hero --> HE[Hero]
     IDX -- quickLinks --> Q[QuickLinks]
     IDX -- featured --> F[FeaturedContent]
+    IDX -- videos --> V[Videos]
     IDX -- technologies --> T[Technologies]
     IDX -- learningPaths --> L[LearningPaths]
     IDX -- events --> C[CommunityEvents]
     IDX -- ecosystem --> E[Ecosystem]
+    IDX -- team --> TM[Team]
     IDX -- navigation.footer --> FO[Footer]
 
     C --> EG1[EventGroup<br/>first-party]
     C --> EG2[EventGroup<br/>community]
 
     LAYOUT --> HTML[(dist/index.html<br/>static HTML + CSS + small JS)]
-    H & HE & Q & F & T & L & C & E & FO --> HTML
+    H & HE & Q & F & V & T & L & C & E & TM & FO --> HTML
 ```
 
 1. `astro build` executes `src/pages/index.astro` **once, at build time**.
@@ -180,8 +189,8 @@ JSON files use deployment-agnostic URLs, and `utils/url.ts` resolves them:
 The header search is fully client-side and needs no external service:
 
 1. At build time, `buildSearchIndex()` (`utils/search.ts`) collects titles, descriptions and URLs from quick links,
-   featured content, technologies, learning paths, both event groups, ecosystem links and the *Resources* dropdown,
-   de-duplicating by title+URL.
+   featured content, videos, technologies, learning paths, both event groups, ecosystem links and the *Resources*
+   dropdown, de-duplicating by title+URL.
 2. The index is embedded in the page as `<script type="application/json" id="search-index">`.
 3. The header script filters entries as you type (all terms must match; titles starting with / containing the query
    rank higher) and shows up to 8 results.
@@ -284,7 +293,22 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 - **Inner workings:** a responsive `auto-fill` grid (min 240px per card) so any number of items lays out naturally.
   The whole card is the link; the CTA text comes from `link.label`.
 
-### 6.6 `Technologies.astro` — technologies at a glance
+### 6.6 `Videos.astro` — videos
+
+- **Purpose:** grid of YouTube videos (demos, tutorials, sessions), each tagged with the technology area it
+  covers. Placed right after Featured content.
+- **Config:** `video.json` (`VideosConfig`): `heading` (with `viewAll`) and `items[]` with `title`, `technology`
+  (badge text), `accent` (badge/card color — reuse the same accent as the matching entry in `technologies.json`
+  for consistency) and `url` (the canonical YouTube URL).
+- **Inner workings:** `utils/youtube.ts` extracts the video ID from `url` (supports `watch`, `youtu.be`, `shorts`
+  and `embed` links) and builds the thumbnail URL (`https://i.ytimg.com/vi/<id>/hqdefault.jpg`, which exists for
+  every public video) — there is no separate thumbnail field to keep in sync. Each card shows the thumbnail with a
+  translucent play-button overlay (`Icon` name `play-circle`), the `technology` badge and the title; the whole card
+  links to the YouTube URL and opens in a new tab. If a URL can't be parsed, a neutral icon tile is shown instead
+  of the thumbnail and a warning is logged at build time. Same responsive `auto-fill` grid as Featured content
+  (4 columns by default on a full-width container, squeezing to 3 → 2 → 1 as the viewport narrows).
+
+### 6.7 `Technologies.astro` — technologies at a glance
 
 - **Purpose:** quick visual index of the extensibility building blocks, each linking to its documentation.
 - **Config:** `technologies.json` (`TechnologiesConfig`): `heading` and `items[]` with `name`, `icon`, `accent`, `url`,
@@ -292,7 +316,7 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 - **Inner workings:** an `auto-fill` grid of small tiles (min 90px), which keeps 11 tiles on one row on desktop and
   wraps on smaller screens. If `image` is set (e.g. an official logo placed in `public/logos/`), it replaces the icon.
 
-### 6.7 `LearningPaths.astro` — recommended learning paths
+### 6.8 `LearningPaths.astro` — recommended learning paths
 
 - **Purpose:** persona-based entry points (Maker, Developer, Architect…).
 - **Config:** `learning-paths.json` (`LearningPathsConfig`): `heading` and `items[]` with `title`, `description`,
@@ -300,7 +324,7 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 - **Inner workings:** each card uses a gradient built from `--accent-soft`, so the tint follows the accent in both
   themes. The artwork comes from `Illustration`.
 
-### 6.8 `CommunityEvents.astro` + `EventGroup.astro` — community & events
+### 6.9 `CommunityEvents.astro` + `EventGroup.astro` — community & events
 
 - **Purpose:** show what's coming up, clearly separating **first-party** events (organized by Microsoft and/or the
   Copilot Extensibility team) from **community** events and initiatives.
@@ -336,7 +360,7 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
   - Dates are rendered in a `<time datetime>` element, formatted in UTC so they don't shift with the build machine's
     time zone.
 
-### 6.9 `Ecosystem.astro` — explore the ecosystem
+### 6.10 `Ecosystem.astro` — explore the ecosystem
 
 - **Purpose:** wider directory of community initiatives, event series and resource collections.
 - **Config:** `ecosystem.json` (`EcosystemConfig`): `heading` (with `subtitle`) and `cards[]`, each with `title`,
@@ -344,7 +368,18 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 - **Inner workings:** an `auto-fit` grid of tinted cards; each card lists its links and shows the illustration in the
   bottom-right corner.
 
-### 6.10 Shared building blocks
+### 6.11 `Team.astro` — meet the team
+
+- **Purpose:** the Copilot Extensibility team behind the site. Placed at the end of the page, right before the
+  footer.
+- **Config:** `team.json` (`TeamConfig`): `heading` and `members[]` with `name`, `role` and `picture` (path to a
+  square headshot image in `public/team/`).
+- **Inner workings:** a plain (non-card) responsive grid — the same `auto-fill` technique as the other grids —
+  showing each member's photo as a circle (`border-radius: 50%`, `object-fit: cover`) next to their name and role
+  (rendered uppercase via CSS, like the badges). Unlike other grid items, member entries aren't links — there is no
+  per-member destination — so they also aren't added to the header search index.
+
+### 6.12 Shared building blocks
 
 | Component / module | Purpose and inner workings |
 | --- | --- |

@@ -1,0 +1,19 @@
+{
+  "heading": {
+    "id": "team",
+    "title": "Meet the team",
+    "subtitle": "The Copilot Extensibility team behind the programs, events and content featured on this site."
+  },
+  "members": [
+    { "name": "Dona Sarkar", "role": "Principal CX Program Manager", "picture": "/team/Dona-Sarkar.jpeg" },
+    { "name": "April Dunnam", "role": "Principal CX Program Manager", "picture": "/team/April-Dunnam.jpeg" },
+    { "name": "Barnam Bora", "role": "Principal Cloud Advocate", "picture": "/team/Barnam-Bora.jpeg" },
+    { "name": "Ayca Bas", "role": "Principal Cloud Advocate", "picture": "/team/Ayca-Bas.jpeg" },
+    { "name": "Daniel Laskewitz", "role": "Principal Technical Program Manager", "picture": "/team/Daniel-Laskewitz.jpeg" },
+    { "name": "Garry Trinder", "role": "Senior Cloud Advocate", "picture": "/team/Garry-Trinder.jpeg" },
+    { "name": "Kamal Shree Soundirapandian", "role": "Cloud Advocate II", "picture": "/team/Kamal-Shree-Soundirapandian.jpeg" },
+    { "name": "Paolo Pialorsi", "role": "Senior Cloud Advocate", "picture": "/team/Paolo-Pialorsi.png" },
+    { "name": "Rabia Williams", "role": "Senior Cloud Advocate", "picture": "/team/Rabia-Williams.jpeg" },
+    { "name": "Scott Durow", "role": "Sr. CX Program Manager", "picture": "/team/Scott-Durow.jpeg" }
+  ]
+}

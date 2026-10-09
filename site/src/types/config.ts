@@ -223,6 +223,42 @@ export interface EcosystemConfig {
 }
 
 // ---------------------------------------------------------------------------
+// video.json -> Videos.astro
+// ---------------------------------------------------------------------------
+
+export interface VideoItem {
+  title: string;
+  /** Technology area the video covers, shown as a badge (e.g. "Copilot Studio", "MCP"). */
+  technology: string;
+  /** Badge color. Reuse the same accent as the matching entry in `technologies.json` for consistency. */
+  accent: Accent;
+  /** Canonical YouTube URL (watch, youtu.be, shorts or embed form). The thumbnail image and the
+   * "watch" link are both derived from it at build time — no separate thumbnail field needed. */
+  url: string;
+}
+
+export interface VideosConfig {
+  heading: SectionHeading;
+  items: VideoItem[];
+}
+
+// ---------------------------------------------------------------------------
+// team.json -> Team.astro
+// ---------------------------------------------------------------------------
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  /** Path (relative to `public/`) to a square headshot image, rendered as a circle. */
+  picture: string;
+}
+
+export interface TeamConfig {
+  heading: SectionHeading;
+  members: TeamMember[];
+}
+
+// ---------------------------------------------------------------------------
 // site.json -> BaseLayout.astro
 // ---------------------------------------------------------------------------
 

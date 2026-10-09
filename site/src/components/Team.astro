@@ -1,0 +1,75 @@
+---
+/**
+ * Team — "Meet the team" section: a responsive grid of team member cards (photo, name, role).
+ * Config: `team.json`. Placed at the end of the page, right before the footer.
+ */
+import type { TeamConfig } from '../types/config';
+import SectionHeader from './SectionHeader.astro';
+import { resolveUrl } from '../utils/url';
+
+interface Props {
+  config: TeamConfig;
+}
+
+const { config } = Astro.props;
+---
+
+<section class="section container" id={config.heading.id} aria-labelledby={`${config.heading.id}-title`}>
+  <SectionHeader heading={config.heading} />
+  <ul class="team-grid">
+    {
+      config.members.map((member) => (
+        <li class="team-member">
+          <img class="team-photo" src={resolveUrl(member.picture)} alt="" width="64" height="64" loading="lazy" />
+          <span class="team-info">
+            <span class="team-name">{member.name}</span>
+            <span class="team-role">{member.role}</span>
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .team-member {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+  }
+  .team-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--surface-alt);
+  }
+  .team-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+  .team-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+  .team-role {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+</style>

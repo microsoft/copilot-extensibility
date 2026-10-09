@@ -9,10 +9,12 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import QuickLinks from '../components/QuickLinks.astro';
 import FeaturedContent from '../components/FeaturedContent.astro';
+import Videos from '../components/Videos.astro';
 import Technologies from '../components/Technologies.astro';
 import LearningPaths from '../components/LearningPaths.astro';
 import CommunityEvents from '../components/CommunityEvents.astro';
 import Ecosystem from '../components/Ecosystem.astro';
+import Team from '../components/Team.astro';
 import Footer from '../components/Footer.astro';
 
 import type {
@@ -23,16 +25,20 @@ import type {
   LearningPathsConfig,
   NavigationConfig,
   QuickLinksConfig,
+  TeamConfig,
   TechnologiesConfig,
+  VideosConfig,
 } from '../types/config';
 import navigationJson from '../data/navigation.json';
 import heroJson from '../data/hero.json';
 import quickLinksJson from '../data/quick-links.json';
 import featuredJson from '../data/featured-content.json';
+import videoJson from '../data/video.json';
 import technologiesJson from '../data/technologies.json';
 import learningPathsJson from '../data/learning-paths.json';
 import communityEventsJson from '../data/community-events.json';
 import ecosystemJson from '../data/ecosystem.json';
+import teamJson from '../data/team.json';
 import { buildSearchIndex } from '../utils/search';
 import { parseFeaturedContentType } from '../types/config';
 
@@ -44,12 +50,14 @@ const featured: FeaturedContentConfig = {
   ...featuredJson,
   items: featuredJson.items.map((item) => ({ ...item, type: parseFeaturedContentType(item.type) })),
 };
+const videos: VideosConfig = videoJson;
 const technologies: TechnologiesConfig = technologiesJson;
 const learningPaths: LearningPathsConfig = learningPathsJson;
 const events: CommunityEventsConfig = communityEventsJson;
 const ecosystem: EcosystemConfig = ecosystemJson;
+const team: TeamConfig = teamJson;
 
-const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technologies, learningPaths, events }); // , ecosystem
+const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technologies, learningPaths, events, videos }); // , ecosystem
 ---
 
 <BaseLayout>
@@ -58,10 +66,12 @@ const searchIndex = buildSearchIndex({ navigation, quickLinks, featured, technol
     <Hero config={hero} />
     <QuickLinks config={quickLinks} />
     <FeaturedContent config={featured} />
+    <Videos config={videos} />
     <Technologies config={technologies} />
     <LearningPaths config={learningPaths} />
     <CommunityEvents config={events} />
     <!--<Ecosystem config={ecosystem} />-->
+    <Team config={team} />
   </main>
   <Footer config={navigation.footer} />
 </BaseLayout>
