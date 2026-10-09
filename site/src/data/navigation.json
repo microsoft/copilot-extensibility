@@ -8,8 +8,8 @@
     "items": [
       { "label": "Learn", "url": "#learning-paths" },
       { "label": "Build", "url": "#featured" },
-      { "label": "Technologies", "url": "#technologies" },
       { "label": "Events", "url": "#community" },
+      { "label": "Videos", "url": "#videos" },
       { "label": "Team", "url": "#team" },
       {
         "label": "Resources",
