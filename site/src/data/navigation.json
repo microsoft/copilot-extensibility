@@ -25,9 +25,14 @@
             "url": "https://devblogs.microsoft.com/microsoft365dev/"
           },
           {
-            "label": "Videos",
+            "label": "Microsoft 365 Developer Videos",
             "description": "Microsoft 365 Developer on YouTube",
             "url": "https://www.youtube.com/@Microsoft365Developer"
+          },
+          {
+            "label": "Microsoft Community Learning Videos",
+            "description": "Microsoft Community Learning on YouTube",
+            "url": "https://www.youtube.com/@MicrosoftCommunityLearning"
           }
         ]
       }
