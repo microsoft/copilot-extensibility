@@ -159,6 +159,7 @@ page:
 | `external` | Optional. Set `false` to open an external link in the same tab, or `true` to open an internal link in a new tab. |
 | `icon` | The name of an icon defined in [`Icon.astro`](../site/src/components/Icon.astro), e.g. `puzzle`, `code`, `users`, `calendar`, `github`. Unknown names fall back to a generic icon and print a warning in the terminal. |
 | Featured content `type` | One of `Cookbook`, `Blog`, `Lab`, `News`, `Article`, `Website`, `Video`. |
+| Featured content `publishedAt` | Required ISO 8601 date and time, such as `2026-10-13T12:43:47+02:00`. The eight newest featured items are displayed in descending publication order. |
 | `accent` | One of `purple`, `blue`, `green`, `orange`, `teal`, `pink`, `indigo`, `red`, `yellow`, `gray`. |
 | `illustration` | `blocks`, `cubes`, `code` (learning paths) or `people`, `calendar`, `folder` (ecosystem). |
 | Dates (`date`, `endDate`) | Use ISO format `YYYY-MM-DD` for dated events. Ranges are formatted automatically (`Nov 10–11, 2026`). The `date` property also accepts free text such as `"Monthly"`; free-text events are not sorted or filtered as dated events. |
@@ -208,12 +209,16 @@ file doesn't matter. With `"hidePast": true`, events whose date has passed are d
 {
   "type": "Sample",
   "title": "Declarative agent with an API plugin",
+  "publishedAt": "2026-10-13T12:43:47+02:00",
   "description": "End-to-end sample with authentication and adaptive cards.",
   "icon": "code",
   "accent": "teal",
   "link": { "label": "View sample", "url": "https://github.com/…" }
 }
 ```
+
+The Featured content section renders at most eight items, newest first. Items with the same `publishedAt` value retain
+their order from the JSON file.
 
 **Add a technology** (`technologies.json` → `items`). To use an official logo, add `"image": "/logos/<file>.svg"`:
 

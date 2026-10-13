@@ -13,13 +13,27 @@ interface Props {
 }
 
 const { config } = Astro.props;
+const isoDateTimePattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?(?:Z|[+-]\d{2}:\d{2})$/;
+const items = config.items
+  .map((item, index) => {
+    const publishedAt = Date.parse(item.publishedAt);
+    if (!isoDateTimePattern.test(item.publishedAt) || Number.isNaN(publishedAt)) {
+      throw new Error(
+        `Invalid publishedAt value "${item.publishedAt}" for featured content "${item.title}". Expected an ISO 8601 date and time.`,
+      );
+    }
+    return { item, index, publishedAt };
+  })
+  .sort((a, b) => b.publishedAt - a.publishedAt || a.index - b.index)
+  .slice(0, 8)
+  .map(({ item }) => item);
 ---
 
 <section class="section container" id={config.heading.id} aria-labelledby={`${config.heading.id}-title`}>
   <SectionHeader heading={config.heading} />
   <ul class="featured-grid">
     {
-      config.items.map((item) => (
+      items.map((item) => (
         <li class={`accent-${item.accent}`}>
           <a class="card card-interactive featured-card" href={resolveUrl(item.link.url)} {...linkAttrs(item.link.url, item.link.external)}>
             <div class="featured-top">

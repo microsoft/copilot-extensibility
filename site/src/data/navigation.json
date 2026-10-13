@@ -84,23 +84,16 @@
           { "label": "Videos", "url": "https://www.youtube.com/@Microsoft365Developer" },
           { "label": "Samples gallery", "url": "https://adoption.microsoft.com/sample-solution-gallery/" }
         ]
+      },
+      {
+        "title": "Support",
+        "links": [
+          { "label": "Get help", "url": "https://learn.microsoft.com/answers/" },
+          { "label": "Report an issue", "url": "https://github.com/microsoft/copilot-extensibility/issues/new" },
+          { "label": "Feedback", "url": "https://github.com/microsoft/copilot-extensibility/discussions" },
+          { "label": "License", "url": "https://github.com/microsoft/copilot-extensibility/blob/main/LICENSE" }
+        ]
       }
-    ],
-    "communities": {
-      "title": "Connect with communities",
-      "links": [
-        { "label": "Microsoft 365 & Power Platform Community", "url": "https://pnp.github.io/" },
-        { "label": "Global AI Community", "url": "https://globalai.community/" }
-      ]
-    },
-    "legal": {
-      "copyright": "© Microsoft {year}",
-      "links": [
-        { "label": "Privacy", "url": "https://go.microsoft.com/fwlink/?LinkId=521839" },
-        { "label": "Terms of use", "url": "https://go.microsoft.com/fwlink/?LinkID=206977" },
-        { "label": "Code of conduct", "url": "https://opensource.microsoft.com/codeofconduct/" },
-        { "label": "Trademarks", "url": "https://www.microsoft.com/legal/intellectualproperty/trademarks" }
-      ]
-    }
+    ]
   }
 }

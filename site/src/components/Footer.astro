@@ -3,7 +3,7 @@
  * Footer — site footer.
  * Config: `navigation.json` → `footer` section (the same file that configures the Header).
  *
- * Layout: brand + tagline + social icons, link columns and a "communities" column.
+ * Layout: brand + tagline + social icons and link columns.
  */
 import type { FooterConfig } from '../types/config';
 import Icon from './Icon.astro';
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { config } = Astro.props;
-const { brand, social, columns } = config; // , communities
+const { brand, social, columns } = config;
 ---
 
 <footer class="site-footer">
@@ -54,24 +54,6 @@ const { brand, social, columns } = config; // , communities
         </nav>
       ))
     }
-
-<!--
-    <nav class="footer-col footer-communities" aria-label={communities.title}>
-      <h2>{communities.title}</h2>
-      <ul>
-        {
-          communities.links.map((link) => (
-            <li>
-              <a class="link-arrow" href={resolveUrl(link.url)} {...linkAttrs(link.url, link.external)}>
-                {link.label}
-                <Icon name="arrow-right" size={13} />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
--->
   </div>
 
   <div class="container visitor-counter">
@@ -88,7 +70,7 @@ const { brand, social, columns } = config; // , communities
   }
   .footer-main {
     display: grid;
-    grid-template-columns: 1.6fr repeat(var(--cols, 3), 1fr) 1.6fr;
+    grid-template-columns: 1.6fr repeat(var(--cols, 3), 1fr);
     gap: 2rem;
     padding-block: 2.5rem 2rem;
   }
@@ -140,10 +122,6 @@ const { brand, social, columns } = config; // , communities
   .footer-col a:hover {
     color: #fff;
   }
-  .footer-communities .link-arrow {
-    font-weight: 500;
-    font-size: 0.85rem;
-  }
   .visitor-counter {
     display: flex;
     justify-content: center;
@@ -154,8 +132,7 @@ const { brand, social, columns } = config; // , communities
     .footer-main {
       grid-template-columns: repeat(3, 1fr);
     }
-    .footer-brand,
-    .footer-communities {
+    .footer-brand {
       grid-column: 1 / -1;
     }
   }

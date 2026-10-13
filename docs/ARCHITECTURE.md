@@ -36,10 +36,11 @@ Unless stated otherwise, paths such as `src/data/…` in this document are relat
 .
 ├── .github/workflows/deploy.yml       # Build ./site & deploy to GitHub Pages (Actions source)
 ├── docs/
+│   ├── README.md                   Repository and contribution guide
 │   ├── ARCHITECTURE.md                # this document
 │   ├── DEVELOPING.md                  # local development guide
 │   └── PUBLISHING.md                  # publishing guide
-├── README.md
+├── README.md                       Repository overview
 └── site/                              # ⬅ the Astro project — everything needed to build the site
     ├── astro.config.mjs               # site + base path (GitHub Pages sub-path)
     ├── package.json                   # dependencies and npm scripts (dev, check, build, preview)
@@ -250,7 +251,7 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 
 ### 6.2 `Footer.astro` — footer
 
-- **Purpose:** brand and tagline, social links, link columns, community links, legal bar.
+- **Purpose:** brand and tagline, social links and link columns.
 - **Config:** the **same file** as the header, `navigation.json` → **`footer`** section (`FooterConfig`).
   Header and footer are two different components reading two different sections of one file.
 
@@ -259,15 +260,13 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
   "footer": {
     "brand": { "name": "…", "logo": "/copilot-logo.png", "url": "/", "tagline": "…" },
     "social": [ { "label": "GitHub", "icon": "github", "url": "…" } ],
-    "columns": [ { "title": "Explore", "links": [ { "label": "Learn", "url": "#learning-paths" } ] } ],
-    "communities": { "title": "Connect with communities", "links": [ … ] },
-    "legal": { "copyright": "© Microsoft {year}", "links": [ { "label": "Privacy", "url": "…" } ] }
+    "columns": [ { "title": "Explore", "links": [ { "label": "Learn", "url": "#learning-paths" } ] } ]
   }
 }
 ```
 
-- **Inner workings:** renders a 5-column grid (brand · N link columns · communities) that collapses to 3 and then 2
-  columns. `{year}` in `legal.copyright` is replaced with the build year. Any number of `columns` is supported.
+- **Inner workings:** renders a grid containing the brand and configured link columns that collapses to 3 and then 2
+  columns. Any number of `columns` is supported.
 
 ### 6.3 `Hero.astro` — hero banner
 
@@ -289,8 +288,10 @@ All TypeScript contracts are in [`src/types/config.ts`](../site/src/types/config
 
 - **Purpose:** highlight a curated set of resources of different types (blog, video, lab, cookbook, sample…).
 - **Config:** `featured-content.json` (`FeaturedContentConfig`): `heading` (`id`, `title`, `viewAll`) and `items[]`
-  with `type` (badge text), `title`, `description`, `icon`, `accent`, `link`.
-- **Inner workings:** a responsive `auto-fill` grid (min 240px per card) so any number of items lays out naturally.
+  with `type` (badge text), `title`, `publishedAt` (ISO 8601 date and time), `description`, `icon`, `accent`, `link`.
+- **Inner workings:** validates publication timestamps, selects the eight newest items and renders them newest first.
+  Items with equal timestamps retain their JSON order. The responsive `auto-fill` grid uses a minimum width of 240px
+  per card.
   The whole card is the link; the CTA text comes from `link.label`.
 
 ### 6.6 `Videos.astro` — videos

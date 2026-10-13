@@ -66,8 +66,6 @@ export interface FooterConfig {
   brand: Brand & { tagline: string };
   social: Array<{ label: string; icon: IconName; url: string }>;
   columns: Array<{ title: string; links: Link[] }>;
-  communities: { title: string; links: Link[] };
-  legal: { copyright: string; links: Link[] };
 }
 
 export interface NavigationConfig {
@@ -126,6 +124,8 @@ export interface FeaturedContentConfig {
     /** Content type shown as a badge. */
     type: FeaturedContentType;
     title: string;
+    /** ISO 8601 date and time used to select and order the newest featured content. */
+    publishedAt: string;
     description: string;
     icon: IconName;
     accent: Accent;

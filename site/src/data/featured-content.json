@@ -7,6 +7,7 @@
     {
       "type": "Lab",
       "title": "Build Plugins for Copilot Cowork",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Learn how to build plugins for Copilot Cowork and extend its capabilities.",
       "icon": "puzzle",
       "accent": "purple",
@@ -15,6 +16,7 @@
     {
       "type": "Cookbook",
       "title": "Microsoft IQ Series",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Videos and hands-on lab to explore Microsoft IQ and its flavors (Work IQ, Foundry IQ, Fabric IQ, Web IQ).",
       "icon": "bot",
       "accent": "blue",
@@ -23,6 +25,7 @@
     {
       "type": "Lab",
       "title": "Work IQ Developer Labs",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Hands-on labs to explore Work IQ capabilities.",
       "icon": "brain",
       "accent": "green",
@@ -31,6 +34,7 @@
     {
       "type": "Lab",
       "title": "Operative guide for Copilot Studio",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Learn how to become operative building agents with Copilot Studio and extend Microsoft 365 Copilot.",
       "icon": "flask",
       "accent": "purple",
@@ -39,6 +43,7 @@
     {
       "type": "Cookbook",
       "title": "Plugins Cookbooks",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Sample recipes for building Plugins for Microsoft 365 Copilot/Cowork using WIQD.",
       "icon": "book-open",
       "accent": "orange",
@@ -47,6 +52,7 @@
     {
       "type": "Website",
       "title": "Work IQ Dev Tools",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "The agentic experience for developers building, debugging, validating, publishing and monitoring declarative agents for Work IQ.",
       "icon": "brain",
       "accent": "green",
@@ -55,6 +61,7 @@
     {
       "type": "Article",
       "title": "Going beyond text in Microsoft 365 Copilot",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Explore how to create Copilot UX components for Microsoft 365 Copilot to go beyond text to enhance productivity and collaboration.",
       "icon": "rocket",
       "accent": "purple",
@@ -63,6 +70,7 @@
     {
       "type": "Blog",
       "title": "SPFx roadmap update September 2026",
+      "publishedAt": "2026-10-13T12:43:47.138+02:00",
       "description": "Stay updated with the latest developments and future plans for the SharePoint Framework (SPFx) as of September 2026.",
       "icon": "calendar",
       "accent": "purple",
