@@ -14,13 +14,6 @@ The site is a static [Astro](https://astro.build/) application under [`site/`](s
 in JSON files under [`site/src/data/`](site/src/data), allowing contributors to update curated resources without
 changing component markup. Changes merged into `main` are published automatically to GitHub Pages.
 
-## Learn more
-
-- [Repository and contribution guide](docs/README.md)
-- [Local development](docs/DEVELOPING.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Publishing](docs/PUBLISHING.md)
-
 ## License
 
 Licensed under the [MIT License](LICENSE).
