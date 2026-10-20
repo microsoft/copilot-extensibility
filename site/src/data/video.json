@@ -10,6 +10,13 @@
   },
   "items": [
     {
+      "title": "Work IQ: the new retrieve tool",
+      "technology": "Work IQ",
+      "accent": "orange",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=mwl4fev1hDI"
+    },
+    {
       "title": "Copilot Dev Camp Summit - Fall Edition 2026",
       "technology": "Microsoft Copilot",
       "accent": "indigo",
@@ -57,13 +64,6 @@
       "accent": "orange",
       "kind": "playlist",
       "url": "https://www.youtube.com/watch?v=TXjoUOOqXd4&list=PLR9nK3mnD-OWw6WqBT7fmxJxEHmyQzUce&index=1"
-    },
-    {
-      "title": "Skill Up: Adding Skills to Your Agent in Microsoft 365 Copilot",
-      "technology": "Work IQ Dev Tools",
-      "accent": "blue",
-      "kind": "video",
-      "url": "https://www.youtube.com/watch?v=JKeNgEYv63k"
     }
   ]
 }

@@ -72,6 +72,7 @@ site/                            The Astro project (everything needed to build t
 
 ## Documentation
 
+- [JSON content reference for editors](CONTENT-REFERENCE.md) — field tables, supported types, icons, accents, illustrations, dates and video options.
 - [Developing locally](DEVELOPING.md) — running the site on localhost, editing content, adding components and pages.
 - [Architecture and components](ARCHITECTURE.md) — how the site is built and how each component works.
 - [Publishing to GitHub Pages](PUBLISHING.md) — step-by-step deployment and maintenance guide.

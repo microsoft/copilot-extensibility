@@ -5,6 +5,15 @@
   },
   "items": [
     {
+      "type": "Blog",
+      "title": "Work IQ: the new retrieve tool",
+      "publishedAt": "2026-10-20T15:00:00.138+02:00",
+      "description": "Learn about the new retrieve tool in Work IQ, now in public preview.",
+      "icon": "search",
+      "accent": "orange",
+      "link": { "label": "Read more", "url": "https://aka.ms/workiq/retrieve/blog" }
+    },
+    {
       "type": "Lab",
       "title": "Build Plugins for Copilot Cowork",
       "publishedAt": "2026-10-13T12:43:47.138+02:00",
