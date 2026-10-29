@@ -6,6 +6,15 @@
   "items": [
     {
       "type": "Blog",
+      "title": "Copilot UX components are generally available",
+      "publishedAt": "2026-10-28T15:00:00.138+02:00",
+      "description": "Learn about the general availability of Copilot UX components and how to bring interactive experiences into Copilot.",
+      "icon": "rocket",
+      "accent": "blue",
+      "link": { "label": "Read more", "url": "https://devblogs.microsoft.com/microsoft365dev/copilot-ux-components-are-generally-available-bring-interactive-experiences-into-copilot/" }
+    },
+    {
+      "type": "Blog",
       "title": "Work IQ: the new retrieve tool",
       "publishedAt": "2026-10-20T15:00:00.138+02:00",
       "description": "Learn about the new retrieve tool in Work IQ, now in public preview.",

@@ -10,6 +10,13 @@
   },
   "items": [
     {
+      "title": "Copilot Dev Camp Summit",
+      "technology": "Microsoft 365 Copilot",
+      "accent": "blue",
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=OIcv38ZEC-8&list=PLfYOgd8wk76Q"
+    },
+    {
       "title": "Work IQ: the new retrieve tool",
       "technology": "Work IQ",
       "accent": "orange",
@@ -57,13 +64,6 @@
       "accent": "purple",
       "kind": "video",
       "url": "https://www.youtube.com/watch?v=g9oCS5byDB4"
-    },
-    {
-      "title": "Work IQ",
-      "technology": "Microsoft IQ",
-      "accent": "orange",
-      "kind": "playlist",
-      "url": "https://www.youtube.com/watch?v=TXjoUOOqXd4&list=PLR9nK3mnD-OWw6WqBT7fmxJxEHmyQzUce&index=1"
     }
   ]
 }
