@@ -6,6 +6,15 @@
   "items": [
     {
       "type": "Blog",
+      "title": "SharePoint Tools for Work IQ",
+      "publishedAt": "2026-11-03T12:43:47.138+02:00",
+      "description": "Announcement of the public preview of the new SharePoint Tools for Work IQ",
+      "icon": "puzzle",
+      "accent": "green",
+      "link": { "label": "Read more", "url": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq" }
+    },
+    {
+      "type": "Blog",
       "title": "Copilot UX components are generally available",
       "publishedAt": "2026-10-28T15:00:00.138+02:00",
       "description": "Learn about the general availability of Copilot UX components and how to bring interactive experiences into Copilot.",
