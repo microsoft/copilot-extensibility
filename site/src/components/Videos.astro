@@ -25,7 +25,7 @@ const { config } = Astro.props;
   <SectionHeader heading={config.heading} />
   <ul class="video-grid">
     {
-      config.items.map((item) => {
+      config.items.slice(0, 8).map((item) => {
         const isPlaylist = item.kind === 'playlist';
         if (isPlaylist && !getYouTubePlaylistId(item.url)) {
           console.warn(`[Videos] "${item.title}" is marked "kind": "playlist" but its URL has no "list=" parameter: ${item.url}`);

@@ -6,6 +6,15 @@
   "items": [
     {
       "type": "Blog",
+      "title": "Work IQ: SharePoint Tools",
+      "publishedAt": "2026-11-06T12:43:47.138+02:00",
+      "description": "Explore the new SharePoint Tools for Work IQ with a developer's perspective.",
+      "icon": "brain",
+      "accent": "purple",
+      "link": { "label": "Read more", "url": "https://devblogs.microsoft.com/microsoft365dev/work-iq-sharepoint-mcp-tools/" }
+    },
+    {
+      "type": "Blog",
       "title": "SharePoint Tools for Work IQ",
       "publishedAt": "2026-11-03T12:43:47.138+02:00",
       "description": "Announcement of the public preview of the new SharePoint Tools for Work IQ",

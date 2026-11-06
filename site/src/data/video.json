@@ -10,6 +10,13 @@
   },
   "items": [
     {
+      "title": "Work IQ: SharePoint MCP Tools",
+      "technology": "Work IQ",
+      "accent": "green",
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=9RN7lsKIbc0"
+    },
+    {
       "title": "Copilot Dev Camp Summit",
       "technology": "Microsoft 365 Copilot",
       "accent": "blue",

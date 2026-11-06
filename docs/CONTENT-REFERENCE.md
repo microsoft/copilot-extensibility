@@ -214,8 +214,8 @@ These fields belong to [`video.json`](../site/src/data/video.json); use `kind`, 
 | Playlist with thumbnail | `https://www.youtube.com/watch?v=VIDEO_ID&list=PLAYLIST_ID` (use a representative video) |
 | Bare playlist | `https://www.youtube.com/playlist?list=PLAYLIST_ID` links to a playlist but cannot provide a thumbnail; avoid for normal publishing. |
 
-Replace the placeholder IDs with actual YouTube IDs. Items render in JSON order, with no featured-style
-eight-item limit. Unsupported `kind` values fail at build time. A playlist without `list`, or a URL from which
+Replace the placeholder IDs with actual YouTube IDs. Only the first eight items render on the home page,
+in JSON order; additional items remain in the file but are not displayed. Unsupported `kind` values fail at build time. A playlist without `list`, or a URL from which
 no thumbnail can be derived, produces a warning; the latter renders a fallback icon instead of an image.
 See [Videos.astro](../site/src/components/Videos.astro) and the [YouTube helpers](../site/src/utils/youtube.ts).
 
