@@ -10,6 +10,13 @@
   },
   "items": [
     {
+      "title": "Copilot Extensibility Monthly Community Calls",
+      "technology": "Copilot Community",
+      "accent": "blue",
+      "kind": "playlist",
+      "url": "https://www.youtube.com/watch?v=oW_U0EgUeho&list=PLR9nK3mnD-OWvoIQ01EuzFCJU9r6V_ML3"
+    },
+    {
       "title": "Work IQ: SharePoint MCP Tools",
       "technology": "Work IQ",
       "accent": "green",
@@ -43,13 +50,6 @@
       "accent": "green",
       "kind": "playlist",
       "url": "https://www.youtube.com/watch?v=YOHnkoQ4Jic&list=PLmsFUfdnGr3wAd0ACGlLB6kz1RR4pMFeY&index=1"
-    },
-    {
-      "title": "Copilot Extensibility Monthly Community Calls",
-      "technology": "Copilot Community",
-      "accent": "blue",
-      "kind": "playlist",
-      "url": "https://www.youtube.com/watch?v=bxtiJ47s6io&list=PLR9nK3mnD-OWvoIQ01EuzFCJU9r6V_ML3"
     },
     {
       "title": "The Microsoft IQ Series",
