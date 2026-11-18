@@ -6,6 +6,15 @@
   "items": [
     {
       "type": "Blog",
+      "title": "Introducing the Starter Pack for Work IQ",
+      "publishedAt": "2026-11-06T12:43:47.138+02:00",
+      "description": "Learn about the Starter Pack for Work IQ and how it can help you get started quickly.",
+      "icon": "bot",
+      "accent": "blue",
+      "link": { "label": "Read more", "url": "https://devblogs.microsoft.com/microsoft365dev/introducing-the-starter-pack-for-work-iq/" }
+    },
+    {
+      "type": "Blog",
       "title": "Work IQ: SharePoint Tools",
       "publishedAt": "2026-11-06T12:43:47.138+02:00",
       "description": "Explore the new SharePoint Tools for Work IQ with a developer's perspective.",
