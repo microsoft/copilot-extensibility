@@ -6,8 +6,17 @@
   "items": [
     {
       "type": "Blog",
+      "title": "Copilot UX components now available in CoWork with Plugins",
+      "publishedAt": "2026-11-24T15:12:47.138+02:00",
+      "description": "Let's see what's new with Copilot UX components in CoWork with Plugins.",
+      "icon": "bot",
+      "accent": "orange",
+      "link": { "label": "Read more", "url": "https://devblogs.microsoft.com/microsoft365dev/copilot-ux-components-now-available-in-cowork-with-plugins-spfx-roadmap-update-for-november-2026/" }
+    },
+    {
+      "type": "Blog",
       "title": "Introducing the Starter Pack for Work IQ",
-      "publishedAt": "2026-11-06T12:43:47.138+02:00",
+      "publishedAt": "2026-11-18T12:43:47.138+02:00",
       "description": "Learn about the Starter Pack for Work IQ and how it can help you get started quickly.",
       "icon": "bot",
       "accent": "blue",
