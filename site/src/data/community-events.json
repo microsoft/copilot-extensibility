@@ -36,26 +36,6 @@
         "organizer": "Copilot Extensibility team",
         "date": "2nd Wed of every month 8 AM PT",
         "link": { "label": "Add to calendar", "url": "https://aka.ms/community/CopilotExtensibility-call-invite" }
-      },
-      {
-        "title": "Microsoft IQ Live",
-        "description": "Bi-weekly live sessions on Microsoft IQ.",
-        "icon": "video",
-        "accent": "blue",
-        "organizer": "Copilot Extensibility team",
-        "date": "Bi-weekly",
-        "link": { "label": "Register", "url": "https://aka.ms/MicrosoftIQLive" }
-      },
-      {
-        "title": "WorkIQ Developer Tools: Copilot & Cowork Extensibility Series",
-        "description": "Three-part series on extending Copilot and Cowork with WIQD.",
-        "icon": "video",
-        "accent": "purple",
-        "organizer": "Microsoft Reactor",
-        "date": "2026-10-21",
-        "endDate": "2026-11-04",
-        "dateLabel": "Oct 21-Nov 4 · Every Wednesday, 9 AM PT",
-        "link": { "label": "Register", "url": "https://aka.ms/wiqd/reactor-series" }
       }
     ]
   },
